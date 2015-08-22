@@ -37,8 +37,7 @@ var AppComponent = React.createClass({
       text: 'submit',
       action: function() {}
     }], _header = 'Modal Header goes here',
-    _content = "Hello, this is the modal content. We would dispatch an action which a Store then reacts on by\
-    providing a callback to the Web Api that will eventually change the state of a Store.";
+    _content = "Hello, this is the modal content. Use dialogs sparingly because they are interruptive in nature. Their sudden appearance forces users to stop their current task and refocus on the dialog content. Not every choice, setting, or detail warrants interruption and prominence.";
 
     React.unmountComponentAtNode(document.getElementById('modalContainer'));
     React.render(<Modal actions={ _actions } header={ _header }>
@@ -145,23 +144,16 @@ var AppComponent = React.createClass({
               items={
                 [{
                   header: 'Item One',
-                  content: 'Cards are a convenient means of displaying content composed of different elements.\
-                  They are also well-suited for showcasing elements whose size or supported actions vary, \
-                  like photos with captions of variable length.'
+                  content: 'Mea quod explicari dissentiunt eu, cu mei laudem instructior. Cu eam saepe graeco labitur, nec et quot quodsi constituam, mea in ipsum sententiae. Iriure sanctus legendos et sed. Mel ut legere iracundia eloquentiam, pri diceret praesent ullamcorper et. Sea ne tincidunt definitionem. Ei vis diam iuvaret vulputate, id sit albucius reprimique, ne diam sint vivendo vel.'
                 },
                 {
                   header: 'Item Two',
-                  content: 'Card content type and quantity can vary greatly. Cards within a card collection can\
-                  each contain a unique data set. For example, various cards within a card collection might contain\
-                  a checklist with an action, a note with an action, and a note with a photo.\
-                  Cards provide context and an entry point to more robust information and views. Dont overload\
-                  cards with extraneous information or actions.'
+                  content: 'Lorem ipsum dolor sit amet, elit appareat mea ei, id posse ubique dissentiunt usu. Vel augue mucius no, unum soleat lobortis sed in. Ad magna veniam malorum his, ne fastidii lobortis gloriatur usu, no cum dicat dicunt sadipscing. Cum legere dictas at, qui in habeo assum, sed in quot decore ridens. Quod blandit officiis ne cum, paulo luptatum per no. Ex duo quot conclusionemque, cum ad dicam doctus. Ut summo scripserit pro, cum putent nonumes facilisi ei.'
                 },
                 {
                   header: 'Item Three',
-                  content: 'Use hierarchy within the card to direct users’ attention to the most important\
-                  information. For example, place primary content at the top of the card, or use typography to\
-                  emphasize primary content.'
+                  content: 'Esse elit utinam ut vel. Qui ne albucius recusabo, sale doming inermis vim ne. Nam scaevola rationibus ad. Est ei oratio antiopam dissentiet. Duo ex melius singulis interesset, at debet clita legere vim, everti expetendis interesset ex qui. Eu mel possit saperet omittantur, vis eu quod fugit.\
+                  Ut deseruisse inciderint pri, bonorum elaboraret vis ne. Ad virtute accusamus intellegam mel, qui eirmod volutpat percipitur no. Duo homero euripidis cu. Vis at ignota persius, admodum dolores argumentum ad sed, eum ne omnis eirmod oporteat. Ad aeterno salutandi pro, cu pri tale prompta deserunt.'
                 }]
               }
             />
@@ -182,12 +174,12 @@ var AppComponent = React.createClass({
                 <PaperTextArea
                   placeholder='description'
                   charLimit={100}
-                  value='Tables may require basic text editing (e.g. editing existing text or adding comments).' />
+                  value='Designing and developing between platforms is a lot like traveling through different countries.' />
                 <br/><br/>
                 <PaperTextArea
                   placeholder='description'
                   disabled={ true }
-                  value='Tables may require basic text editing (e.g. editing existing text or adding comments).' />
+                  value='Designing and developing between platforms is a lot like traveling through different countries.' />
               </div>
             </div>
           </div>
@@ -361,20 +353,20 @@ var AppComponent = React.createClass({
                 <h5>Underlined card</h5>
                 <Card
                   type='underlined'
-                  title='Hello World!'
-                  content='Since the Ice Cream Sandwich release, Roboto has been the standard typeface on Android. Since\
-                  Froyo, Noto has been the standard typeface on Android for all languages not covered by Roboto. Noto is also\
-                  the standard typeface for all languages on Chrome OS.'
+                  title='Paris!'
+                  content='Paris, France capital, is a major European city and a global center for art, fashion, gastronomy
+                   and culture. Its picturesque 19th-century cityscape is crisscrossed by wide boulevards and the River
+                    Seine.'
                 />
               </div>
               <div className='col-md-6'>
                 <h5>Solid-header card</h5>
                 <Card
                   type='solid-header'
-                  title='Hello World!'
-                  content='Since the Ice Cream Sandwich release, Roboto has been the standard typeface on Android. Since\
-                  Froyo, Noto has been the standard typeface on Android for all languages not covered by Roboto. Noto is also\
-                  the standard typeface for all languages on Chrome OS.'
+                  title='Paris!'
+                  content='Paris, France capital, is a major European city and a global center for art, fashion, gastronomy
+                   and culture. Its picturesque 19th-century cityscape is crisscrossed by wide boulevards and the River
+                    Seine.'
                 />
               </div>
             </div>
@@ -540,8 +532,7 @@ The ability for users to query and manipulate data at scale
               <div>
                 <div>Tab One</div>
                 <div>
-                  Tab One content goes here.<br/>This is an example of a tab template! You can put
-                  any sort of HTML or react component in here. It even keeps the component state!
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a lectus sit amet arcu accumsan varius. Nam congue eget ligula vel fermentum. Ut efficitur dui et magna varius, ac tincidunt lectus varius. Morbi pulvinar pulvinar sollicitudin. Nullam ornare volutpat arcu, et hendrerit lorem porta vitae. Proin convallis lobortis velit, dictum scelerisque leo elementum nec. Maecenas non augue ut dolor gravida mattis. Nunc vitae dolor a purus sagittis lacinia.
                   <br/><br/>
                   <div className='row'>
                     <div className='col-md-4'>
@@ -556,7 +547,7 @@ The ability for users to query and manipulate data at scale
               <div>
                 <div>Tab Two</div>
                 <div>
-                  This is another example of a tab template!
+                  Curabitur rhoncus tortor in dui sollicitudin laoreet. Suspendisse malesuada consequat risus nec lacinia. Mauris commodo tellus vitae varius sagittis. Maecenas sit amet nibh felis.
                   <br/><br/>
                   <PaperTextArea placeholder='enter description' />
                 </div>
@@ -564,7 +555,7 @@ The ability for users to query and manipulate data at scale
               <div>
                 <div>Tab Three</div>
                 <div>
-                  This is yet another example of a tab template!
+                  Nunc ac ullamcorper augue, ornare sollicitudin mi. In a sodales neque, sed egestas ex. Pellentesque eget scelerisque elit. Vestibulum pulvinar nulla a dui faucibus, vestibulum pellentesque libero porta.
                   <br/><br/>
                   <PaperInput placeholder='enter your name' />
                 </div>
@@ -584,13 +575,13 @@ The ability for users to query and manipulate data at scale
               <div className='col-md-6'>
                 <h5>default label</h5>
                 <Label type='default'>
-                  Instead of editing text, users may need to select from a predefined list of options.
+                  Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam. Quem volumus vim id, denique facilisi moderatius eam no.
                 </Label>
               </div>
               <div className='col-md-6'>
                 <h5>success label</h5>
                 <Label type='success'>
-                  Instead of editing text, users may need to select from a predefined list of options.
+                  Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam. Quem volumus vim id, denique facilisi moderatius eam no.
                 </Label>
               </div>
             </div>
@@ -599,13 +590,13 @@ The ability for users to query and manipulate data at scale
               <div className='col-md-6'>
                 <h5>info label</h5>
                 <Label type='info'>
-                  Instead of editing text, users may need to select from a predefined list of options.
+                  Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam. Quem volumus vim id, denique facilisi moderatius eam no.
                 </Label>
               </div>
               <div className='col-md-6'>
                 <h5>warning label</h5>
                 <Label type='warning'>
-                  Instead of editing text, users may need to select from a predefined list of options.
+                  Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam. Quem volumus vim id, denique facilisi moderatius eam no.
                 </Label>
               </div>
             </div>
@@ -615,36 +606,13 @@ The ability for users to query and manipulate data at scale
             <div className='col-md-6'>
               <h5>error label</h5>
               <Label type='error'>
-                Instead of editing text, users may need to select from a predefined list of options.
+                Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam. Quem volumus vim id, denique facilisi moderatius eam no.
               </Label>
             </div>
             <div className='col-md-6'></div>
           </div>
         </div>
-        <br/><br/>
-        <div className='eachComponent'>
-          <h3>File Input</h3>
-          <div className='row'>
-            <div className='col-md-12'>
-              <FileInput />
-            </div>
-          </div>
-        </div>
-        <br/><br/>
-        <div className='eachComponent'>
-          <h3>Multiple Component</h3>
-          <div className='row'>
-            <div className='col-md-4'>
-              <h5>User list</h5>
-              <MultipleComponent
-                tooltip='user'
-                component={ <PaperInput placeholder='user' /> }
-                value={['Pete Hunt', 'Chris Chadeau', 'Lee Byron']}
-              />
-            </div>
-            <div className='col-md-8'></div>
-          </div>
-        </div>
+
         <br/><br/><br/><br/>
       </div>
     )
