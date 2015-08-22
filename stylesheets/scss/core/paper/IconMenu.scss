@@ -1,0 +1,60 @@
+
+@import "../../mixin/box-shadow";
+@import "../../mixin/vendor-prefix";
+@import "../../mixin/ripple";
+
+.iconmenu {
+  position: relative;
+
+  ul {
+    position: absolute;
+    max-width: 200px;
+    height: auto;
+    background-color: white;
+    z-index: 10;
+    list-style: none;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    @include prefix(transition, all 0.3s ease);
+    @include prefix(transform, scale(0));
+    @include generate-box-shadow(2);
+
+    li {
+      position: relative;
+      background-color: white;
+      padding: 2rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      overflow: hidden;
+      @include prefix(transition, all 0.2s ease);
+
+      @include createRippleCSS(menuitemripple, rgba(0,0,0,0.4), 40, 0.3s);
+
+      &:hover {
+        background-color: #f1f1f1;
+      }
+    }
+  }
+
+  ul.show {
+    @include prefix(transform, scale(1));
+  }
+
+  ul.topleft {
+    @include prefix(transform-origin, 0% 0%);
+  }
+
+  ul.topright {
+    @include prefix(transform-origin, 100% 0%);
+  }
+
+  ul.bottomleft {
+    @include prefix(transform-origin, 0% 100%);
+  }
+
+  ul.bottomright {
+    @include prefix(transform-origin, 100% 100%);
+  }
+
+}

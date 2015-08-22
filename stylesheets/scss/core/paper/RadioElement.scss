@@ -1,0 +1,48 @@
+
+.radioelement {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .radioelementitem {
+    display: block;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    cursor: default;
+
+    .circle {
+      float: left;
+      margin-right: 0.5rem;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid #5a5a5a;
+      position: relative;
+
+      p{
+        position: absolute;
+        left: -2px;
+        top: -2px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: rgb(66, 133, 244);
+        transform: scale(0);
+        transition: transform 0.3s ease;
+      }
+    }
+  }
+  .radioelementitem.selected {
+    color: #2196F3;
+    .circle {
+      border-color: #1E88E5;
+
+      > p {
+        transform: scale(0.5);
+      }
+    }
+  }
+}

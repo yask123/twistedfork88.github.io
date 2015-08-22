@@ -1,0 +1,64 @@
+
+@import "../mixin/box-shadow";
+@import "../mixin/vendor-prefix";
+
+.content {
+
+  background-color: white;
+  padding: 1rem;
+  @include generate-box-shadow(2);
+
+  .body .material-icons {
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .path, .body, .response {
+    > div {
+      display: block;
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+
+      > code {
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+      small {
+        font-size: 1.1rem;
+        color: #999999;
+
+        ::before {
+          content: " ";
+        }
+      }
+    }
+  }
+
+}
+
+.nav-tabs {
+  border: 0;
+
+  > li > a{
+    border:0;
+    border-bottom: 2px solid transparent;
+    border-bottom-color: transparent;
+
+    @include prefix(transition, all 0.3s ease);
+  }
+
+  > li:hover > a{
+    border-bottom: 2px solid green;
+    border-bottom-color: rgba(200, 200, 200, 0.2);
+    background-color: transparent;
+
+  }
+
+  >li.active>a, >li.active>a:focus, >li.active>a:hover {
+    border: 0;
+    border-bottom: 2px solid #4285f4;
+    border-bottom-color: #4285f4;
+    background-color: transparent;
+  }
+
+}

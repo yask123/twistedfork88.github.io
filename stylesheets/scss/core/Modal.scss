@@ -1,0 +1,75 @@
+
+@import "../mixin/box-shadow";
+
+$overlay-zindex: 20px;
+
+.confirmmodal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: none;
+
+  p {
+    font-size: 1.3rem;
+  }
+
+  .overlay {
+    position: fixed;
+    width: 100%;
+    top:0;
+    left:0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.4);
+    z-index: $overlay-zindex;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+  }
+
+  .modalbox {
+    position: fixed;
+    width: 800px;
+    min-height: 200px;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -400px;
+    border-radius: 4px;
+    z-index: 100;
+    opacity: 0;
+    background-color: white;
+    transition: all 0.3s ease-out;
+    @include generate-box-shadow(2);
+
+    .modalcontent, .actions {
+      font-weight: bolder;
+      padding: 1rem;
+    }
+
+    .actions {
+      font-weight: bold;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+
+  }
+}
+
+.confirmmodal.show {
+  display: block;
+
+  .overlay {
+    opacity: 1;
+  }
+
+  .modalbox {
+    animation: animateModalBox 0.3s ease-out forwards;
+  }
+}
+
+@keyframes animateModalBox {
+  100% {
+    opacity: 1;
+    margin-top: -100px;
+  }
+}

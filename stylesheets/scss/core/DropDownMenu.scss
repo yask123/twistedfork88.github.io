@@ -1,0 +1,62 @@
+@import '../mixin/vendor-prefix';
+
+.dropdownmenu2 {
+  width: 100%;
+  font-size: 1.3rem;
+  position: relative;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+
+  .input {
+    border-bottom: 1px solid #e5e5e5;
+    width: 100%;
+    display: table;
+    position: relative;
+    font-size: 1.5rem;
+
+    .material-icons {
+      position: absolute;
+      right: 0.5rem;
+      bottom: 0.5rem;
+    }
+  }
+
+  > .options {
+
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      //z-index: 5;
+      display: none;
+      background-color: white;
+
+      @include prefix(box-shadow, "rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.239216) 0px 1px 4px");
+
+
+      li {
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+        color: #333333;
+        padding: 1rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        font-size: 1.4rem;
+        @include prefix(transition, all 0.1s ease);
+
+        &:hover {
+          color: #a1a1a1;
+          background: #EEEEEE;
+        }
+      }
+  }
+
+  .options.show {
+    display: block;
+  }
+
+}

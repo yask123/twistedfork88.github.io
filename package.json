@@ -1,0 +1,20 @@
+{
+  "name": "FKUILib",
+  "version": "1.0.0",
+  "description": "Material design based React components.",
+  "main": "NA",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abinash Mohapatra",
+  "license": "ISC",
+  "devDependencies": {
+    "react": "^0.13.3",
+    "react-draggable": "0.8.1",
+    "underscore": "^1.8.3",
+    "bootstrap": "^3.3.4",
+    "immutable": "^3.7.4",
+    "jquery": "^2.1.4",
+    "object-assign": "^3.0.0"
+  }
+}

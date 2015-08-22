@@ -1,0 +1,119 @@
+
+@import '../mixin/vendor-prefix';
+@import "./material-icons";
+
+$link-normal-color: #444444;
+
+.leftnavbarcontainer {
+  position: relative;
+
+  .overlay {
+    position: fixed;
+    z-index: 2;
+    top:0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+  }
+
+  .overlay.shown {
+    display: block;
+  }
+
+  .material-icons {
+    color: white;
+  }
+
+}
+
+.leftnavbar {
+  //border-right: 1px solid rgba(0,0,0,0.14);
+  bottom: 0;
+  background: #2196f3;
+  color: white;
+  display: block;
+  position: fixed;
+  top: 0;
+  width: 250px;
+  z-index: 4;
+
+  -webkit-transition-delay: 0.1s;
+  -moz-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+  -webkit-transition-duration: 0.6s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  @include prefix(transform, translate(-250px, 0));
+
+ .logo {
+    //border-bottom: 1px solid #e0e0e0;
+    display: block;
+    height: 64px;
+    padding: 12px 0 11px 24px;
+    position: relative;
+    background: #2196f3;
+    margin-top: 3rem;
+
+    img {
+      width: 60%;
+    }
+  }
+
+  nav {
+    font-size: 13px;
+    padding: 12px 0 10px 0;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+
+    h2 {
+      padding: 15px 0 15px 22px;
+    }
+
+    dl dt {
+      border-left: 2px solid transparent;
+      color: white;
+      font-weight: bold;
+      margin-top: 0;
+      padding: 15px 0 15px 22px;
+      cursor: pointer;
+    }
+
+    dl dt.active {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    dl > div {
+      display: none;
+    }
+
+    dl div dd a {
+      border-left: 2px solid transparent;
+      color: #FFCA28 !important;
+      display: block;
+      font-weight: 400;
+      letter-spacing: 0.1px;
+      padding: 10px 24px 10px 46px;
+      white-space: nowrap;
+      text-decoration: none;
+      cursor: pointer;
+      color: $link-normal-color;
+    }
+
+  }
+
+}
+
+.leftnavbar.shown {
+  @include prefix(transform, translate(0px, 0));
+}

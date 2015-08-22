@@ -1,0 +1,127 @@
+
+@import "../../mixin/vendor-prefix";
+
+.paperinput{
+  position: relative;
+  padding: 0px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  * {
+    font-size: 1.3rem;
+  }
+
+  input, textarea{
+    border: 0px;
+    border-radius: 0px;
+    display: block;
+    color: #343434;
+    padding: 1.2rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0px;
+    width: 100%;
+    background: transparent;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.6) ;
+    outline: none;
+    box-shadow: none;
+    font-size: 1.5rem;
+
+    &:focus{
+      outline: none !important;
+      box-shadow: none;
+
+      ~ .highlight {
+        @include prefix(animation, inputHighlighter 0.4s ease);
+      }
+
+      @-webkit-keyframes inputHighlighter {
+        from { background:#1E88E5; }
+        to 	{ left:0;width:0; max-width: 0; background:transparent; }
+      }
+      @-moz-keyframes inputHighlighter {
+        from { background:#1E88E5; }
+        to 	{ left:0; width:0; max-width: 0; background:transparent; }
+      }
+      @keyframes inputHighlighter {
+        from { background:#1E88E5; }
+        to 	{ left:0;width:0; max-width: 0; background:transparent; }
+      }
+
+    }
+  }
+
+  input:disabled, textarea:disabled {
+    color: #a1a1a1;
+    border-bottom: 1px dashed #b1b1b1;
+  }
+
+  input[type='email']:invalid {
+    color: #C62828;
+  }
+
+  .belowborder{
+    position: absolute;
+    bottom: 0rem;
+    width: 100%;
+    height: 2px;
+    background: #1E88E5;
+
+    @include prefix(transition, 0.15s ease-in);
+    @include prefix(transform, scale(0));
+  }
+
+  .belowborder.invalid {
+    background-color: red;
+    @include prefix(transform, scale(1));
+  }
+
+  .belowborder.belowborderanimate{
+    @include prefix(transform, scale(1));
+  }
+
+  .fakePlaceholder{
+    text-transform: lowercase;
+    position: absolute;
+    top: 1.2rem;
+    left: 0px;
+    z-index: 0;
+    color: #777;
+    pointer-events: none;
+    font-size: 1.4rem;
+    display: inline-block !important;
+
+    @include prefix(transition, all 0.1s ease-out);
+  }
+
+  .fakePlaceholder.fakeAnimate{
+    top: 0rem;
+    font-size: 1.1rem;
+    color: #0D47A1;
+  }
+
+  .fakePlaceholder.disabled.fakeAnimate {
+    color: #616161;
+  }
+
+  > .highlight {
+    position:absolute;
+    height:60%;
+    max-height: 20px;
+    width:100%;
+    max-width: 50px;
+    top:10px;
+    left:10%;
+    pointer-events:none;
+    opacity:0.5;
+  }
+}
+
+.charcounter {
+  margin-top: 0.5rem;
+  display: block;
+  font-size: 1rem;
+}
+.charcounter.invalid {
+  color: #E53935;
+}

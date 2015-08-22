@@ -1,0 +1,62 @@
+
+.accordianpanel {
+  display: block;
+  width: 100%;
+  background-color: #e5e6e6;
+  box-shadow: 0 2px 4px 0px rgba(0,0,0,0.2);
+
+  > .accordianItem {
+    display: block;
+    width: 100%;
+    font-size: 1.3rem;
+    margin: 0;
+    background-color: white;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-left: 5px solid #64B5F6;
+    transition: margin 0.33s ease-out;
+
+
+    > .card-head {
+      font-weight: bolder;
+      position: relative;
+      overflow: hidden;
+      line-height: 36px;
+      min-height: 36px;
+      vertical-align: middle;
+      border-radius: 2px 2px 0 0;
+      cursor: pointer;
+      padding: 1rem;
+      font-family: 'Riona-Medium';
+
+      .material-icons {
+        line-height: 36px;
+        color: #999999;
+      }
+    }
+
+    > .card-body {
+      padding: 1rem;
+      font-size: 1.5rem;
+      display: none;
+
+      transition: all 0.33s ease-out;
+    }
+
+    > .card-body.expanded {
+      display: block;
+    }
+  }
+
+  > .accordianItem:last-child {
+    border-bottom: 0;
+  }
+
+  > .accordianItem.expanded {
+    margin: 1rem 0;
+    border-left: 5px solid #2196F3;
+  }
+
+  > .accordianItem.expanded:first-child {
+    margin-top: 0;
+  }
+}

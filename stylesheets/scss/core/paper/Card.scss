@@ -1,0 +1,76 @@
+
+.card {
+  background-color: white;
+  color: black;
+  box-shadow: 0 1px 6px -1px rgba(0, 0, 0, 0.3);
+
+  > .card-header {
+    position: relative;
+    vertical-align: middle;
+    border-radius: 2px 2px 0 0;
+    padding: 0.5rem;
+    padding-left: 1.5rem;
+    padding-top: 1rem;
+
+    > h4 {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0;
+    }
+
+    > div.close {
+      display: inline-block;
+      float: right;
+      margin-top: 3px;
+      cursor: pointer;
+
+      .material-icons {
+        font-size: 1.5rem;
+        color: black;
+      }
+    }
+  }
+
+  > .card-content {
+    padding: 1.5rem;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    border-radius: 0 0 2px 2px;
+  }
+}
+
+.card.solid-header > .card-header {
+  background-color: #2196F3;
+  color: white;
+}
+
+.card.underlined > .card-header {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.card.colored {
+  background-color: #2196F3;
+  color: white;
+
+  > .card-header {
+    border-bottom: 0px;
+  }
+}
+
+.card.outlined {
+  box-shadow: 0 1px 6px -1px #2196F3;
+}
+
+.card.rich-media {
+
+  .card-rich-media-bg {
+    width: 100%;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  h4 {
+    font-family: "Riona-Medium";
+  }
+}

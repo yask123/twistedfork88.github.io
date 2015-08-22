@@ -1,0 +1,50 @@
+
+@import "../../mixin/vendor-prefix";
+
+.chip {
+  min-width: 150px;
+  height: 32px;
+  border-radius: 32px;
+  background-color: rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  img {
+    width: 32px;
+    height: 32px;
+    float: left;
+    margin-right: 8px;
+    border-radius: 50%;
+  }
+
+  p {
+    line-height: 3.5rem;
+    color: white;
+    width: 100px;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    text-transform: uppercase;
+    font-family: "Riona-Medium";
+  }
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
+
+  &:hover p {
+    color: #555555;
+  }
+}
+
+.chip.active {
+  background-color: #f6f6f6;
+
+  p {
+    color: #121212;
+  }
+
+  &:hover {
+    background-color: #f6f6f6;
+  }
+}

@@ -1,0 +1,29 @@
+
+@import "../../mixin/vendor-prefix";
+
+.fabbuttongrp{
+  width: 50px;
+  position: relative;
+
+  .fabchildren {
+    width: 100%;
+    min-height: 50px;
+    //margin-top: 2rem;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: calc(-100% - 55px);
+    @include prefix(transition, all 0.3s ease);
+
+    > .fabbutton {
+      display: block;
+      margin-top: 0.3rem;
+    }
+
+  }
+
+  .fabchildren.show {
+    display: block;
+    margin-top: 0;
+  }
+}

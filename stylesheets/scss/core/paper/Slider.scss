@@ -1,0 +1,95 @@
+
+@import "../../mixin/vendor-prefix";
+
+.slider {
+  width: 100%;
+  position: relative;
+
+  .track {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 3px;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    .trackfill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 3px;
+      width: 0;
+      background-color: #1565C0;
+      @include prefix(transition-timing-function, linear);
+    }
+  }
+
+  .thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #1565C0;
+    position: absolute;
+    left: 0;
+    top: calc(50% - 6px);
+    z-index: 3;
+    cursor: pointer;
+    @include prefix(transition-timing-function, ease);
+
+  }
+
+  .thumb.normal {
+    @include prefix(transition, box-shadow 0.3s ease);
+  }
+
+  .thumb.normal.react-draggable-dragging {
+    @include prefix(box-shadow, 0 0 0 10px rgba(144, 202, 249, 0.3));
+  }
+  .thumb.normal.green.react-draggable-dragging {
+    @include prefix(box-shadow, 0 0 0 10px rgba(52, 168, 83, 0.15));
+  }
+
+  .thumb.pin.react-draggable-dragging{
+    &:before {
+      content: "";
+      position: absolute;
+      top: -33px;
+      left: calc(50% - 16px);
+      width: 26px;
+      height: 26px;
+      margin-left: 3px;
+      border-radius: 50% 50% 50% 0;
+      background-color: #1565C0;
+      @include prefix(transform, rotate(-45deg) scale(1) translate(0));
+    }
+    &:after {
+      content: attr(data-value) "";
+      position: absolute;
+      top: -23px;
+      left: -10px;
+      width: 32px;
+      height: 26px;
+      text-align: center;
+      color: #fff;
+      font-size: 10px;
+    }
+  }
+}
+
+.slider.green{
+
+  .trackfill {
+    background-color: rgb(52, 168, 83);
+  }
+
+  .thumb {
+    background-color: rgb(52, 168, 83);
+  }
+
+  .thumb.pin.react-draggable-dragging{
+    &:before {
+      background-color: rgb(52, 168, 83);
+    }
+  }
+
+}

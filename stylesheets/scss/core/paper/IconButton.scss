@@ -1,0 +1,97 @@
+@import "../../mixin/vendor-prefix";
+
+.iconbutton {
+  width: 40px;
+  height: 40px;
+  background-color: #4285f4;
+  color: white;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: bolder;
+  line-height: 40px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-transform: uppercase;
+  white-space: nowrap;
+  @include prefix(transform, rotateZ(0.000001));
+
+  .material-icons{
+    margin-top: 20%;
+  }
+
+  > .ink{
+    position: absolute;
+    background: rgba(230, 230, 230, 0.7);
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    box-sizing:border-box;
+    opacity: 0.3;
+    @include prefix(transform, scale(0));
+  }
+
+  > .ink.animate{
+      -webkit-animation: ripple 0.2s linear;
+      -moz-animation: ripple 0.2s linear;
+      animation: ripple 0.2s linear;
+  }
+
+  @-webkit-keyframes ripple{
+  	  0% {
+  	  	-webkit-transform:scale(0);
+  	}
+      100% {
+           opacity: 0;
+          -webkit-transform:scale(7.5);
+
+      }
+  }
+  @-moz-keyframes ripple{
+  	  0% {
+  	  	-moz-transform:scale(0);
+  	}
+      100% {
+           opacity: 0;
+          -moz-transform:scale(7.5);
+
+      }
+  }
+  @keyframes ripple{
+  	  0% {
+  	  	transform:scale(0);
+  	}
+      100% {
+          opacity: 0;
+          transform:scale(7.5);
+
+      }
+  }
+
+}
+
+.iconbutton.shadow {
+  @include prefix(box-shadow, "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)");
+
+  &:hover {
+    @include prefix(box-shadow, "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)");
+  }
+
+}
+
+.iconbutton.default {
+  background-color: rgba(100,100,100,0.1);
+  color: #666666;
+}
+
+.iconbutton.info {
+  background-color: #2196FE;
+  color: white;
+}
+
+.iconbutton.transparent {
+  background-color: transparent;
+  color: white;
+}

@@ -1,0 +1,101 @@
+@import "../../mixin/vendor-prefix";
+
+.fabbutton {
+  width: 50px;
+  height: 50px;
+  background-color: #4285f4;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  line-height: 50px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-transform: uppercase;
+  white-space: nowrap;
+  @include prefix(box-shadow, "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)");
+
+  .material-icons{
+    margin-top: 25%;
+  }
+
+  &:hover {
+    @include prefix(box-shadow, "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)");
+  }
+
+  .ink{
+    position: absolute;
+    background: rgba(230, 230, 230, 1);
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    box-sizing:border-box;
+    opacity: 0.3;
+    -webkit-transform:scale(0);
+    -moz-transform: scale(0);
+    transform: scale(0);
+  }
+
+  .ink.animate{
+      -webkit-animation: ripple 0.25s linear;
+      -moz-animation: ripple 0.25s linear;
+      animation: ripple 0.25s linear;
+  }
+
+  @-webkit-keyframes ripple{
+  	  0% {
+  	  	-webkit-transform:scale(0);
+  	}
+      100% {
+           opacity: 0;
+          -webkit-transform:scale(7.5);
+
+      }
+  }
+  @-moz-keyframes ripple{
+  	  0% {
+  	  	-moz-transform:scale(0);
+  	}
+      100% {
+           opacity: 0;
+          -moz-transform:scale(7.5);
+
+      }
+  }
+  @keyframes ripple{
+  	  0% {
+  	  	transform:scale(0);
+  	  }
+      100% {
+        opacity: 0;
+        transform:scale(7.5);
+      }
+  }
+
+}
+
+.fabbutton.default {
+  background-color: #f1f1f1;
+  color: #666666;
+}
+
+.fabbutton.amber {
+  background-color: #FFA000;
+}
+
+.fabbutton.green {
+  background-color: rgb(52, 168, 83);
+}
+
+.fabbutton.danger {
+  background-color: #D32F2F;
+  color: white;
+}
+
+.fabbutton.info {
+  background-color: #2196FE;
+  color: white;
+}

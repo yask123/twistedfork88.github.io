@@ -1,0 +1,44 @@
+
+@import "../../mixin/vendor-prefix";
+@import "../../mixin/box-shadow";
+
+.snackbar {
+  width: 400px;
+  height: auto;
+  min-height: 20px;
+  background: rgb(20, 20, 20);
+  padding: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.3rem;
+  position: fixed;
+  bottom: 0;
+  left: 30px;
+  z-index: 3;
+  @include prefix(transition, all 0.3s ease);
+  @include prefix(transform, translate(0px, 100px));
+  @include generate-box-shadow(2);
+
+  * {
+    color: white;
+  }
+
+  div.row .vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: #FFC107;
+  }
+
+  .material-icons {
+    color: #0277BD;
+  }
+}
+
+.snackbar.show {
+  @include prefix(transform, translate(0px, -30px));
+}

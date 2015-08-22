@@ -1,0 +1,15 @@
+
+@import "../../mixin/ripple";
+
+.DropDownMenu {
+
+  > ul {
+      li {
+        position: relative;
+        overflow: hidden;
+
+        @include createRippleCSS(DropDownMenuRipple, rgba(0,0,0,0.4), 40, 0.3s);
+      }
+  }
+
+}

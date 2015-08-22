@@ -1,0 +1,61 @@
+
+@import "../mixin/box-shadow";
+
+$logout-zindex: 10;
+
+.logoutbox {
+  width: 250px;
+  background-color: #ffffff;
+  position: absolute;
+  right: 10%;
+  z-index: $logout-zindex;
+  padding: 0;
+  display: none;
+  @include generate-box-shadow(3);
+
+  > span {
+    position: absolute;
+    top: -10px;
+    border-top: 30px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #0277BD;
+    right: 20px;
+  }
+
+  .topbox {
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    background-color: #0277BD;
+    background-image: url(http://3.bp.blogspot.com/-86jN0QntZhc/VDW1u5gn2II/AAAAAAAALDg/-HbrdVSTHbA/s1600/Untitled-2.jpg);
+    background-position: center;
+    background-size: 100%;
+    position: relative;
+
+    > img {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      margin-left: -30px;
+      margin-bottom: -30px;
+    }
+  }
+
+  .bottombox {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-top: 1px solid #c5c5c5;
+
+    >  div {
+      margin-top: 40px;
+    }
+  }
+
+}
+
+.logoutbox.show {
+  display: block;
+}

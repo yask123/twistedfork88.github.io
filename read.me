@@ -1,0 +1,134 @@
+
+This file explains how to use the JavaScript components. Note that not all components are ready for use. the
+list below highlights the ones that are ready to be consumed/played around with. More components are to be added
+in time:
+
+1. AccordianElem - Accordian component. Usage example:
+
+  <AccordianElem
+    items = {
+      [
+        {
+          header: 'item header',
+          content: ReactElement
+        },
+        {
+          header: 'another header',
+          content: ReactElement
+        }
+      ]
+    }
+  />
+
+2. AutoComplete - AutoComplete component. Usage example:
+   Assuming that the url '/api/data' returns an array of items (primitive strings), we could use:
+   <AutoComplete url='/api/data' />
+
+3. Avatar - User avatar component. Example usage:
+   <Avatar src={ _userImgSrc } />
+
+4. Card - Card component. Example usage:
+   <Card title='My Header' content="Card content" />
+  (more details in Card.js component definition)
+
+5. Checkbox - Checkbox component. Example usage:
+   <Checkbox checked={ true } />
+
+6. Chip - Chip component. Example usage:
+   <Chip imgSrc='myimg.png' name='abinash mohapatra' />
+
+7. CircularGauge - Circular Gauge component (canvas based). Example usage:
+   <CircularGauge angle="158" /> //angle in degrees
+
+8. ComboBox - ComboBox component i.e. it's an AutoComplete + select drop down. Example usage:
+   <ComboBox items={ ['apple', 'grapes', 'orange', 'pineapple'] } /> or
+   <ComboBox url="/api/data" />
+
+9. DropDownMenu - select drop down menu. Example usage:
+   <DropDownMenu items={['apple', 'grapes', 'orange']} />
+
+10.a FabButton - FAB component. Example usage:
+  <FabButton clickHandler={ clickCallback }>
+    <i className='material-icons'>add</i>
+  </FabButton>
+
+10.b FabButtonGroup - fab button with children. Example usage:
+  <FabButtonGroup>
+    <FabButton type="info" placement="right" tooltip="edit app" clickHandler={ _someclickHandler }>
+      <i className="material-icons">mode_edit</i>
+    </FabButton>
+    <FabButton type="info" placement="right" tooltip="delete app" clickHandler={ __someclickHandler2 }>
+      <i className="material-icons">delete</i>
+    </FabButton>
+  </FabButtonGroup>
+
+11. FileInput - file input component (features a checkbox for toggling drop zone)
+
+12. IconButton - Icon button component. Example usage:
+  <IconButton><i className="material-icons">menu</i></IconButton>
+
+13. List - List component. Example usage:
+  <List items={ [
+    {
+      icon: 'apps',
+      text: 'List Item',
+      href: "#/blah/blahblah", //url to navigate to on click
+      isHash: true
+    }] }
+
+14. Modal - modal component. Example usage:
+    let _actions = [
+      {
+        text: 'cancel' //cancel button
+      },
+      {
+        text: 'delete', //submit button
+        action: yourActionCallback //action upon clicked
+      }
+    ],
+    _header = 'Hey there... this is a modal!', //modal header
+    _content = "This is a modal component."; // modal content
+
+    <Modal actions={ _actions } header={ _header }>
+       { _content }
+    </Modal>
+
+15. MultipleComponent - an input list or array component. E.g. inputs with 'ADD MORE' option.
+    Example Usage:
+    let users = ['rob', 'paul', 'jake', 'pete'];
+    <MultipleComponent component={ <PaperInput /> } value={ users } />
+
+16. PaperButton - button component. Example usage:
+    <PaperButton icon='save' clickHandler={ callback }>save</PaperButton>
+
+17. PaperInput/PaperTextArea - text input and text area components. Example Usage:
+
+    <PaperInput placeholder="my input" value="hello world" />
+    <PaperTextArea placeholder="my textarea" value="hello world" />
+
+18. Switch - switch component. Example usage:
+    <Switch checked={ true } />
+
+19. RadioElement - radio button component. Example usage:
+    <RadioElement
+      onItemSelect={ selectHandler }
+      items={
+        [
+          { label: 'Hello', value: 'hello', selected: true },
+          { label: 'World', value: 'world', selected: false }
+        ]
+      }
+    />
+
+20. Slider - slider component. Example usage:
+    <Slider type="pin" max={23} value={10} /> (with pin head) or
+    <Slider value={30} max={59} /> (normal slider)
+
+21. SnackBar - snackbar component. Example usage:
+
+    <SnackBar icon='clear' message='something went wrong...' />
+
+================================================================================================================
+
+You can go through other components as well. There are some more components to be added soon. I will soon be
+hosting the repo on github. You can go thru the code, play around and provide feedback.

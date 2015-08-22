@@ -1,0 +1,61 @@
+
+@import "../../mixin/ripple";
+
+.tabscontrol {
+  display: block;
+  width: 100%;
+  padding: 0;
+  position: relative;
+
+  .tabslider {
+    margin-top: -3px;
+    height: 3px;
+    background-color: #00E5FF;
+    transition: all 0.3s ease;
+    transition-timing-function: cubic-bezier(0.4, 0.0, 1, 1);
+  }
+
+  .tabheaders {
+    display: table;
+    width: 100%;
+    padding: 0;
+    background-color: #2779fc;
+    box-shadow: 0px 2px 5px 2px rgba(0,0,0,0.2);
+
+    .tabheader {
+      position: relative;
+      padding: 1.5rem;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      text-align: center;
+      color: #c9c9c9;
+      font-size: 1.3rem;
+      text-align: center;
+      font-family: "Riona-Medium";
+      text-transform: uppercase;
+      float: left;
+      overflow: hidden;
+      cursor: pointer;
+
+      @include createRippleCSS(rippleTab, rgba(255, 255, 255, 0.99), 100, 0.5s);
+
+    }
+
+    .tabheader.active {
+      color: white;
+    }
+  }
+
+  .tabcontents {
+    display: block;
+
+    .tabcontent {
+      display: none;
+      margin-top: 2rem;
+      font-size: 1.5rem;
+    }
+    .tabcontent.active {
+      display: block;
+    }
+  }
+}

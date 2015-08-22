@@ -1,0 +1,63 @@
+
+@import "../../mixin/vendor-prefix";
+
+.tablecontrol {
+
+  width: 100%;
+
+  * {
+    font-size: 1.5rem;
+  }
+
+  table {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 4px -1px rgba(0, 0, 0, 0.2);
+  }
+
+  tr, th, td {
+    border: 0px;
+    padding: 1rem;
+    //padding-left: 0.2rem;
+  }
+
+  tr {
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  tr:nth-child(even) {
+    background-color: rgb(250, 250, 250);
+  }
+
+  th {
+    font-family: "Riona-Medium";
+    padding-top: 2rem;
+    background-color: white;
+    color: #777777;
+    text-transform: uppercase;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  th.amber {
+    background-color: rgb(234, 67, 53);
+  }
+
+  th.green {
+    background-color: rgb(52, 168, 83);
+  }
+
+  tr:hover {
+    //background-color: rgb(250, 250, 250);
+  }
+
+  td {
+    white-space: normal;
+  }
+
+  .filterinput {
+    margin-bottom: 0.5rem;
+  }
+
+}

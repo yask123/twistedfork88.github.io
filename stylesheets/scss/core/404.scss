@@ -1,0 +1,15 @@
+
+@import "../mixin/ripple";
+
+.fourOfour {
+  text-align: center;
+  margin: auto;
+  padding: 2rem;
+  display: table;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  @include createRippleCSS(fourOfourRipple, rgba(180,180,180,0.4), 200, 1s);
+
+}

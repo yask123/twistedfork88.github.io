@@ -1,0 +1,55 @@
+
+@import "../../mixin/ripple";
+
+.list {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 2px;
+  background-color: rgba(250,250,250,1);
+
+  > li {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    font-weight: bolder;
+    background-color: rgb(250,250,250);
+    cursor: pointer;
+
+    @include createRippleCSS(listItemRipple, rgba(0,0,0,0.5), 200);
+
+    > a{
+      text-transform: none;
+      color: inherit;
+    }
+
+    div {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    div:first-child {
+      padding-right: 1rem;
+    }
+
+    .material-icons {
+      font-size: 2.5rem;
+    }
+
+  }
+
+  > li:last-child {
+    border-bottom: 0;
+  }
+
+  > li:hover {
+    color: #1565C0;
+  }
+
+  box-shadow: 0 1px 6px -2px rgba(0,0,0,0.2);
+}
