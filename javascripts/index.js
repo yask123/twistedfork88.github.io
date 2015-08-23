@@ -29,6 +29,16 @@ import Label from './components/core/Label';
 import MultipleComponent from './components/core/MultipleComponent';
 
 var AppComponent = React.createClass({
+  getInitialState: function() {
+    return {
+      tabVal: 59
+    }
+  },
+  tabValChange: function(value) {
+    this.setState({
+      tabVal: value
+    });
+  },
   showModal: function() {
 
     let _actions = [{
@@ -204,16 +214,16 @@ var AppComponent = React.createClass({
                   <h5 className='boldFont'>Without icons</h5>
                   <div className='row'>
                     <div className='col-md-2'>
-                      <PaperButton>submit</PaperButton>
+                      <PaperButton>search</PaperButton>
                     </div>
                     <div className='col-md-2'>
-                      <PaperButton type='green'>submit</PaperButton>
+                      <PaperButton type='green'>create</PaperButton>
                     </div>
                     <div className='col-md-2'>
-                      <PaperButton type='amber'>submit</PaperButton>
+                      <PaperButton type='amber'>wifi off</PaperButton>
                     </div>
                     <div className='col-md-6'>
-                      <PaperButton type='danger'>submit</PaperButton>
+                      <PaperButton type='danger'>delete</PaperButton>
                     </div>
                   </div>
                   <br/>
@@ -537,7 +547,14 @@ The ability for users to query and manipulate data at scale
                   <div className='row'>
                     <div className='col-md-4'>
                       <h5>Total aggregate</h5>
-                      <Slider min={0} max={100} value={59} />
+                      <div className='row'>
+                        <div className='col-md-10'>
+                          <Slider min={0} max={100} value={59} onValueChange={ this.tabValChange } />
+                        </div>
+                        <div className='col-md-2 boldFont' style={{marginTop:'-0.5rem', color: '#2779fc'}}>
+                          { this.state.tabVal || 59 }
+                        </div>
+                      </div>
                     </div>
                     <div className='col-md-8'></div>
                   </div>
@@ -614,6 +631,29 @@ The ability for users to query and manipulate data at scale
         </div>
 
         <br/><br/><br/><br/>
+        <div className="row" style={{
+          position: 'absolute',
+          bottom: 0,
+          left: '15px',
+          width: '100%'
+        }}>
+          <div className="col-md-3" style={{
+          backgroundColor: '#C62828',
+          height: '4px'
+        }}></div>
+          <div className="col-md-3" style={{
+          backgroundColor: '#2196F3',
+          height: '4px'
+        }}></div>
+          <div className="col-md-3" style={{
+          backgroundColor: '#009688',
+          height: '4px'
+        }}></div>
+          <div className="col-md-3" style={{
+          backgroundColor: '#FFC107',
+          height: '4px'
+        }}></div>
+        </div>
       </div>
     )
   }

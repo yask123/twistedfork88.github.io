@@ -1,9 +1,11 @@
 
 import React from 'react';
 import List from '../core/List';
+import RippleMixin from '../../mixins/RippleMixin';
 import { getReactDOMNodeForRef, getReactDOMNode } from '../../utils/FKUtils';
 
 var AccordianElem = React.createClass({
+  mixins:[ RippleMixin ],
   propTypes: {
     items: React.PropTypes.array
   },
@@ -26,6 +28,7 @@ var AccordianElem = React.createClass({
   },
   toggleCard: function(index, evt){
 
+    this.createRipple(evt, evt.currentTarget);
     let _s = this.state.items.slice();
     _s = _s.map((item, idx) => {
       if(index === idx) {
@@ -37,9 +40,11 @@ var AccordianElem = React.createClass({
       return item;
     });
 
-    this.setState({
-      items: _s
-    });
+    setTimeout(() => {
+      this.setState({
+        items: _s
+      });
+    }, 500);
 
   },
   render: function() {

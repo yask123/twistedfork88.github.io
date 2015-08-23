@@ -43,7 +43,7 @@ var PaperButton = React.createClass({
 
     /** remove the ink element after animation ends. */
 		$(inkElem)
-      .on('animationend animationend webkitAnimationEnd mozAnimationEnd', function(evt){
+      .on('animationend webkitAnimationEnd mozAnimationEnd', function(evt){
         $(evt.target).remove();
       })
       .addClass('animate');

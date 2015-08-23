@@ -16,7 +16,10 @@ var Card = React.createClass({
   propTypes: {
     type: React.PropTypes.string,
     title: React.PropTypes.string.isRequired,
-    content: React.PropTypes.string
+    content: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.element
+    ])
   },
   getDefaultProps: function(){
     return {
