@@ -517,11 +517,15 @@ The ability for users to query and manipulate data at scale
             </p>
             <TableControl rows={
               [
-                ['Dessert', 'Calories', 'Fat', 'Carbs', 'Protein', 'Sodium'],
+                ['Dessert (100g)', 'Calories', 'Fat (g)', 'Carbs (g)', 'Protein (g)', 'Sodium (mg)'],
                 ['Frozen Yogurt', 159, 6, 24, 4.0, 89],
                 ['Ice Cream Sandwich', 237, 9.0, 37, 4.3, 129],
                 ['Eclair', 262, 16.0, 24, 6.0, 337],
-                ['Cupcake', 305, 3.7, 67, 4.3, 413]
+                ['Cupcake', 305, 3.7, 67, 4.3, 413],
+                ['Gingerbread', 356, 16.0, 49, 3.9, 327],
+                ['Jelly bean', 375, 0.0, 94, 0.0, 50],
+                ['Lollipop', 392, 0.2, 98, 0, 38],
+                ['Honeycomb', 408, 3.2, 87, 6.5, 562]
               ]
             } />
           </div>
