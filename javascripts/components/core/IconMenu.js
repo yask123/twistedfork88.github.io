@@ -7,7 +7,8 @@ import RippleMixin from '../../mixins/RippleMixin';
 var IconMenu = React.createClass({
   propTypes: {
     items: React.PropTypes.array.isRequired,
-    openDirection: React.PropTypes.string
+    openDirection: React.PropTypes.string,
+    onItemSelect: React.PropTypes.func
     /*,
     btnElement: function(props, propName) {
       if(!props[propName] || !props[propName].tagName) {
@@ -35,14 +36,16 @@ var IconMenu = React.createClass({
     let _val = evt.target.innerHTML;
     this.createRipple(evt, evt.currentTarget);
 
-    if(this.props.onItemSelect && typeof this.props.onItemSelect === "function") {
-      this.props.onItemSelect.call(null, _val);
-    }
-    setTimeout(() => {
+    setTimeout((val) => {
+
+      if(this.props.onItemSelect && typeof this.props.onItemSelect === "function") {
+        this.props.onItemSelect.call(null, val);
+      }
+
       this.setState({
         menuShown: !this.state.menuShown
       });
-    }, 500);
+    }.bind(this, _val), 500);
   },
   componentDidMount: function() {
 

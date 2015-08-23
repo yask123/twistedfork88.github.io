@@ -39,6 +39,9 @@ var AppComponent = React.createClass({
       tabVal: value
     });
   },
+  iconMenuValSelect: function(value) {
+    alert('You selected '+value);
+  },
   showModal: function() {
 
     let _actions = [{
@@ -405,19 +408,35 @@ var AppComponent = React.createClass({
             <div className='row'>
               <div className='col-md-3'>
                 <h5>Top-Left</h5>
-                <IconMenu openDirection='top-left' items={['apple', 'orange', 'pineapple']} />
+                <IconMenu
+                  openDirection='top-left'
+                  items={['apple', 'orange', 'pineapple']}
+                  onItemSelect={ this.iconMenuValSelect }
+                />
               </div>
               <div className='col-md-3'>
                 <h5>Top-Right</h5>
-                <IconMenu openDirection='top-right' items={['apple', 'orange', 'pineapple']} />
+                <IconMenu
+                  openDirection='top-right'
+                  items={['apple', 'orange', 'pineapple']}
+                  onItemSelect={ this.iconMenuValSelect }
+                />
               </div>
               <div className='col-md-3'>
                 <h5>Bottom-Left</h5>
-                <IconMenu openDirection='bottom-left' items={['apple', 'orange', 'pineapple']} />
+                <IconMenu
+                  openDirection='bottom-left'
+                  items={['apple', 'orange', 'pineapple']}
+                  onItemSelect={ this.iconMenuValSelect }
+                />
               </div>
               <div className='col-md-3'>
                 <h5>Bottom-Right</h5>
-                <IconMenu openDirection='bottom-right' items={['apple', 'orange', 'pineapple']} />
+                <IconMenu
+                  openDirection='bottom-right'
+                  items={['apple', 'orange', 'pineapple']}
+                  onItemSelect={ this.iconMenuValSelect }
+                />
               </div>
             </div>
           </div>
@@ -596,13 +615,13 @@ The ability for users to query and manipulate data at scale
               <div className='col-md-6'>
                 <h5>default label</h5>
                 <Label type='default'>
-                  Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam. Quem volumus vim id, denique facilisi moderatius eam no.
+                  Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam.
                 </Label>
               </div>
               <div className='col-md-6'>
                 <h5>success label</h5>
                 <Label type='success'>
-                  Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam. Quem volumus vim id, denique facilisi moderatius eam no.
+                  Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam.
                 </Label>
               </div>
             </div>
@@ -611,13 +630,13 @@ The ability for users to query and manipulate data at scale
               <div className='col-md-6'>
                 <h5>info label</h5>
                 <Label type='info'>
-                  Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam. Quem volumus vim id, denique facilisi moderatius eam no.
+                  Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam.
                 </Label>
               </div>
               <div className='col-md-6'>
                 <h5>warning label</h5>
                 <Label type='warning'>
-                  Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam. Quem volumus vim id, denique facilisi moderatius eam no.
+                  Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam.
                 </Label>
               </div>
             </div>
@@ -627,7 +646,7 @@ The ability for users to query and manipulate data at scale
             <div className='col-md-6'>
               <h5>error label</h5>
               <Label type='error'>
-                Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam. Quem volumus vim id, denique facilisi moderatius eam no.
+                Lorem ipsum dolor sit amet, ne nam oportere liberavisse. Et pro fuisset electram suavitate. Sed et iisque lobortis intellegam.
               </Label>
             </div>
             <div className='col-md-6'></div>
