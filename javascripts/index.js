@@ -25,8 +25,75 @@ import ProgressBar from './components/core/ProgressBar';
 import FileInput from './components/core/FileInput';
 import AccordianElem from './components/core/AccordianElem';
 import SnackBar from './components/core/SnackBar';
+import Wizard from './components/core/Wizard';
 import Label from './components/core/Label';
 import MultipleComponent from './components/core/MultipleComponent';
+
+
+var WizardItem1 = React.createClass({
+  getValue: function() {
+    return {
+      name: this.refs.name.getValue(),
+      pass: this.refs.pass.getValue()
+    }
+  },
+  render: function() {
+    return (
+      <div className='row'>
+        <div className='col-md-7'>
+          <h5 className='boldFont'>
+            Provide your username and password
+          </h5>
+          <PaperInput placeholder='username' ref='name' value={ this.props.value.name || "" } /><br/>
+          <PaperInput placeholder='password' type='password' ref='pass' value={ this.props.value.pass || "" } />
+        </div>
+        <div className='col-md-5'></div>
+      </div>
+    )
+  }
+});
+
+var WizardItem3 = React.createClass({
+  getValue: function() {
+    return {
+      desc: this.refs.desc.getValue()
+    }
+  },
+  render: function() {
+    return (
+      <div className='row'>
+        <div className='col-md-6'>
+          <h5 className='boldFont'>Please describe yourself in short !!</h5>
+          <PaperTextArea charLimit={150} placeholder='description' ref='desc' value={ this.props.value.desc || "" } />
+        </div>
+        <div className='col-md-6'></div>
+      </div>
+    )
+  }
+});
+
+var WizardItem2 = React.createClass({
+  getValue: function() {
+    return {
+      fname: this.refs.fname.getValue(),
+      lname: this.refs.lname.getValue(),
+      checked: this.refs.checked.getValue()
+    }
+  },
+  render: function() {
+    return (
+      <div className='row'>
+        <div className='col-md-6'>
+          <h5 className='boldFont'>Fill in your personal details below.</h5>
+          <PaperInput placeholder='firstname' ref='fname' value={ this.props.value.fname || "" } /><br/>
+          <PaperInput placeholder='lastname' ref='lname' value={ this.props.value.lname || "" } /><br/>
+          <Checkbox ref='checked' label='I agree to terms and conditions' checked={ this.props.value.checked || false } />
+        </div>
+        <div className='col-md-6'></div>
+      </div>
+    )
+  }
+});
 
 var AppComponent = React.createClass({
   getInitialState: function() {
@@ -86,31 +153,42 @@ var AppComponent = React.createClass({
   render: function() {
 
     let _listItems = [
-        {
-          icon: 'account_circle',
-          text: 'USER ACCOUNT',
-          href: "#",
-          isHash: true
-        },
-        {
-          icon: 'data_usage',
-          text: 'DATA USAGE',
-          href: "#",
-          isHash: true
-        },
-        {
-          icon: 'cloud_circle',
-          text: 'CLOUD INSTANCE',
-          href: "#",
-          isHash: true
-        },
-        {
-          icon: 'navigation',
-          text: 'NAVIGATION',
-          href: "#",
-          isHash: true
-        }
-      ];
+      {
+        icon: 'account_circle',
+        text: 'USER ACCOUNT',
+        href: "#",
+        isHash: true
+      },
+      {
+        icon: 'data_usage',
+        text: 'DATA USAGE',
+        href: "#",
+        isHash: true
+      },
+      {
+        icon: 'cloud_circle',
+        text: 'CLOUD INSTANCE',
+        href: "#",
+        isHash: true
+      },
+      {
+        icon: 'navigation',
+        text: 'NAVIGATION',
+        href: "#",
+        isHash: true
+      }
+    ],
+    _wizardItems = [
+      <WizardItem1 />,
+      <WizardItem2 />,
+      <WizardItem3 />,
+      <div>
+        <h5>Hurray! All is done.</h5><br/>
+        <PaperButton>submit</PaperButton><br/>
+        <h6>P.S. The submit above does absolutely nothing.</h6>
+      </div>
+    ];
+
 
     return (
       <div>
@@ -610,6 +688,12 @@ The ability for users to query and manipulate data at scale
           </div>
           <br/><br/>
           <div className='eachComponent'>
+            <h3>Multi-Step Wizard</h3>
+            <br/>
+            <Wizard stepsCount={4} items={ _wizardItems } />
+          </div>
+          <br/><br/>
+          <div className='eachComponent'>
             <h3>Labels</h3>
             <div className='row'>
               <div className='col-md-6'>
@@ -653,7 +737,9 @@ The ability for users to query and manipulate data at scale
           </div>
         </div>
 
-        <br/><br/><br/><br/>
+        <br/><br/>
+
+        <br/><br/>
         <div className="row" style={{
           position: 'absolute',
           bottom: 0,
