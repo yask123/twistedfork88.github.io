@@ -53,7 +53,7 @@ var IconMenu = React.createClass({
     this._btn = React.findDOMNode(this.refs.btn);
     this._menu = this._dom.querySelector('ul');
 
-    this._bindClickAway(this, this._menu, 'menuShown', false);
+    this.hideOnDocumentClick(this, this._menu, 'menuShown', false);
 
     let _width, _height, _btnSize, _offset = {};
     _width = $(this._menu).width();

@@ -34,30 +34,35 @@ var FabButton = React.createClass({
     this._dom = getReactDOMNode(this);
     $('[data-toggle]').tooltip();
 
-    $(document).on('themechange', (evt) => {
-      this.setState({
-        _className: "fabbutton " + evt.theme
-      });
-    });
   },
   render: function() {
     if(this.props.tooltip) {
-      return (
-        <div
-          className={ this.state._className }
-          onClick={this.onClick}
-          data-toggle="tooltip"
-          data-placement={ this.props.placement }
-          title={ this.props.tooltip }
-          >
-          { this.props.children }
-        </div>
-      )
+      if(!this.state.disabled) {
+        return (
+          <div
+            className={ this.state._className }
+            onClick={this.onClick}
+            data-toggle="tooltip"
+            data-placement={ this.props.placement }
+            title={ this.props.tooltip }
+            >
+            { this.props.children }
+          </div>
+        );
+      }
+      else {
+        return <button className='fabbutton disabled'>{ this.props.children }</button>;
+      }
     }
     else {
-      return (
-        <div className={ this.state._className } onClick={this.onClick}>{ this.props.children }</div>
-      );
+      if(!this.state.disabled) {
+        return (
+          <div className={ this.state._className } onClick={this.onClick}>{ this.props.children }</div>
+        );
+      }
+      else {
+        return <button className='fabbutton disabled'>{ this.props.children }</button>;
+      }
     }
   }
 });

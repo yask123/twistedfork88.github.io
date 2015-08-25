@@ -6,7 +6,7 @@ var FabButtonGroup = React.createClass({
   componentDidMount: function() {
     this._dom = React.findDOMNode(this);
     this._children = this._dom.querySelector('.fabchildren');
-    let _children = $(this._children).find('.fabbutton').length;
+    let _children = this._children.querySelectorAll('.fabbutton').length;
 
     this._children.style.top = "calc(-100% - "+(55*(_children -1))+"px)";
   },

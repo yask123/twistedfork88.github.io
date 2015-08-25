@@ -223,6 +223,14 @@
   background-color: rgb(52, 168, 83);
 }
 
+.paperbutton.disabled {
+  outline: none;
+  box-shadow: none;
+  border: 0px;
+  background-color: #e1e1e1;
+  color: #b1b1b1;
+}
+
 .paperLink {
   padding: 1rem;
   padding-bottom: 0;

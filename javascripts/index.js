@@ -37,6 +37,19 @@ var WizardItem1 = React.createClass({
       pass: this.refs.pass.getValue()
     }
   },
+  validate: function() {
+    let _val = this.getValue();
+    if(!_val.name || !_val.pass) {
+      return {
+        isValid: false,
+        validationMsg: 'Please fill in your name and password to continue.'
+      }
+    }
+    return {
+      isValid: true,
+      validationMsg: null
+    }
+  },
   render: function() {
     return (
       <div className='row'>
@@ -303,8 +316,11 @@ var AppComponent = React.createClass({
                     <div className='col-md-2'>
                       <PaperButton type='amber'>wifi off</PaperButton>
                     </div>
-                    <div className='col-md-6'>
+                    <div className='col-md-2'>
                       <PaperButton type='danger'>delete</PaperButton>
+                    </div>
+                    <div className='col-md-4'>
+                      <PaperButton disabled={ true }>cancel</PaperButton>
                     </div>
                   </div>
                   <br/>
@@ -319,8 +335,11 @@ var AppComponent = React.createClass({
                     <div className='col-md-2'>
                       <PaperButton type='amber' icon='signal_wifi_off'>wifi off</PaperButton>
                     </div>
-                    <div className='col-md-6'>
+                    <div className='col-md-2'>
                       <PaperButton type='danger' icon='delete'>delete</PaperButton>
+                    </div>
+                    <div className='col-md-4'>
+                      <PaperButton disabled={ true } icon='cancel'>cancel</PaperButton>
                     </div>
                   </div>
                 </div>
@@ -352,9 +371,14 @@ var AppComponent = React.createClass({
                             <i className="material-icons">apps</i>
                           </FabButton>
                         </div>
-                        <div className='col-md-6'>
+                        <div className='col-md-2'>
                           <FabButton tooltip="delete" placement="bottom" type='danger'>
                             <i className="material-icons">clear</i>
+                          </FabButton>
+                        </div>
+                        <div className='col-md-4'>
+                          <FabButton disabled={ true } type='danger'>
+                            <i className="material-icons">videocam_off</i>
                           </FabButton>
                         </div>
                       </div>

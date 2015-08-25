@@ -19,11 +19,10 @@ var IconButton = React.createClass({
     }
   },
   addEventListener: function(event, cb) {
-    $(this._dom).on(event, cb);
+    //$(this._dom).on(event, cb);
   },
   componentDidMount: function() {
     this._dom = getReactDOMNode(this);
-    $('[data-toggle]').tooltip();
   },
   render: function() {
     let _className = "iconbutton " + (this.props.type || "");
@@ -33,9 +32,6 @@ var IconButton = React.createClass({
         <div
           className={ _className }
           onClick={this.onClick}
-          data-toggle="tooltip"
-          data-placement={ this.props.placement }
-          title={ this.props.tooltip }
           >
           { this.props.children }
         </div>

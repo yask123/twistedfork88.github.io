@@ -1,7 +1,25 @@
 
 
 import React from 'react/addons';
-import _ from 'underscore';
+import { getReactDOMNode } from '../../utils/FKUtils';
+import { times } from 'underscore';
+
+/** The way wizards would work is :
+  * 1. the Wizard component takes an array of React components
+  * 2. Each such component would need to define 2 specific methods:
+  *   a. getValue: A mandatory method, that would return an object containing the value
+  *      of the component. Note that this object would be passed as prop to the component when rendered
+  *   b. validate: this method would be called in to determine if the wizard needs to validate
+  *      before moving on to another step in the wizard. This method should return an object of
+  *      the format
+  *      {
+  *        isValid: Boolean,
+  *        validationMsg: String
+  *      }
+  * 3. Whenever we need to change the step in the wizard the above methods would be called in and if
+  *    the validate method is defined and returns a valid component, the wizard moves to the desired
+  *    step.
+  */
 
 var Wizard = React.createClass({
   propTypes: {
@@ -19,17 +37,20 @@ var Wizard = React.createClass({
   },
   componentDidMount: function() {
     //align the navs
-    this._dom = React.findDOMNode(this);
-    this._navFill = this._dom.querySelector('.wizardNavFill');
+    this._dom = getReactDOMNode(this);
 
     let _navs = $(this._dom).find('.wizardEachNav');
     _navs.each((ind, item) => {
       $(item).css('left', (ind*(100/(this.state.steps - 1)))+'%');
     });
-
     _navs.css('margin-left', '-20px');
+
   },
   stepSelect: function(step) {
+
+    if(step < 0 || step >= this.state.steps) {
+      return;
+    }
 
     let _currentComponentVal = (this.refs[this.state.currentStep].getValue) ?
                                   this.refs[this.state.currentStep].getValue():
@@ -37,20 +58,54 @@ var Wizard = React.createClass({
         _componentVal = this.state.componentValue.slice();
 
     _componentVal[this.state.currentStep] = _currentComponentVal;
+
+    //validate if the wizard needs to move to the desired step
+    if(
+      this.refs[this.state.currentStep].validate &&
+      typeof this.refs[this.state.currentStep].validate === 'function'
+    ) {
+      let _validate = this.refs[this.state.currentStep].validate();
+      if(_validate && !_validate.isValid) {
+        alert(_validate.validationMsg);
+        return;
+      }
+    }
+
     this.setState({
-      currentStep: (step - 1),
+      currentStep: step,
       componentValue: _componentVal
     });
   },
+  canTransition: function(step) {
+
+    if(step >= this.state.currentStep) {
+      if(step - this.state.currentStep <= 1) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+    else {
+      return true;
+    }
+
+  },
   render: function() {
-    let _c = 0,
-        _nav = _.times(this.state.steps, () => {
+    let _c = -1,
+        _nav = times(this.state.steps, () => {
           ++_c;
           let _class = 'wizardEachNav';
-          if(_c -1 <= this.state.currentStep) {
+          if(_c <= this.state.currentStep) {
             _class = 'wizardEachNav active';
           }
-          return <div key={_c} className={ _class } data-index={ _c } onClick={ this.stepSelect.bind(this, _c) }>{ _c }</div>;
+
+          if(this.canTransition(_c)) {
+            return <div key={_c} className={ _class } data-index={ _c } onClick={ this.stepSelect.bind(this, _c) }>{ _c + 1 }</div>;
+          }
+          else {
+            return <div key={_c} className={ _class } data-index={ _c }>{ _c + 1 }</div>;
+          }
 
         }),
         _navFillStyle = {
@@ -62,7 +117,40 @@ var Wizard = React.createClass({
             ref: this.state.currentStep,
             value:(this.state.componentValue[this.state.currentStep] || {})
           }
-        );
+        ),
+        _prevStep = (this.state.currentStep - 1 < 0) ? 0: (this.state.currentStep - 1),
+        _nextStep = (this.state.currentStep + 1 >= this.state.stepsCount) ? this.state.stepsCount: (this.state.currentStep + 1);
+
+    let _leftControl = "", _rightControl = "";
+
+
+    if(this.state.currentStep -1 >=0) {
+      _leftControl = <div
+                        className='control'
+                        onClick={ this.stepSelect.bind(this, _prevStep) }
+                      >
+                        <i className="material-icons">keyboard_arrow_left</i>
+                      </div>;
+    }
+    else {
+      _leftControl = <div className='control inactive'>
+                        <i className="material-icons">keyboard_arrow_left</i>
+                      </div>
+    }
+
+    if(this.state.currentStep + 1 <this.state.steps) {
+      _rightControl = <div
+                        className='control'
+                        onClick={ this.stepSelect.bind(this, _nextStep) }
+                      >
+                        <i className="material-icons">keyboard_arrow_right</i>
+                      </div>;
+    }
+    else {
+      _rightControl = <div className='control inactive'>
+                        <i className="material-icons">keyboard_arrow_right</i>
+                      </div>;
+    }
 
     return (
       <div className='fkwizard'>
@@ -72,6 +160,11 @@ var Wizard = React.createClass({
         </div>
         <div className='wizardContent'>
           { _component }
+        </div>
+        <br/><hr/><br/>
+        <div className='paginatecontrols'>
+        { _leftControl }
+        { _rightControl }
         </div>
       </div>
     )

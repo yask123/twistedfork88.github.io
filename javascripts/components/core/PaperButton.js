@@ -1,6 +1,7 @@
 
 
 import React from 'react';
+import $ from 'jquery';
 import { generateRandomString } from '../../utils/FKUtils';
 
 var PaperButton = React.createClass({
@@ -65,11 +66,7 @@ var PaperButton = React.createClass({
     }
   },
   componentDidMount: function() {
-    $(document).on('themechange', function(evt) {
-      this.setState({
-        _className: "paperbutton " + evt.theme
-      });
-    }.bind(this));
+
   },
   render: function() {
     let _content = this.props.children, _style={};
@@ -84,9 +81,19 @@ var PaperButton = React.createClass({
       );
     }
 
-    return (
-      <div style={_style} className={ this.state._className } onClick={this.onClick}>{ _content }</div>
-    );
+    if(!this.state.disabled) {
+      return (
+        <div style={_style} className={ this.state._className } onClick={this.onClick}>{ _content }</div>
+      );
+    }
+    else {
+      if(!this.props.icon) {
+        return <button className='paperbutton disabled' disabled>{ _content }</button>;
+      }
+      else {
+        return <button style={_style} className='paperbutton disabled' disabled>{ _content }</button>;
+      }
+    }
   }
 });
 

@@ -63,11 +63,7 @@ var FlatButton = React.createClass({
     }
   },
   componentDidMount: function() {
-    $(document).on('themechange', function(evt) {
-      this.setState({
-        _className: "flatbutton " + evt.theme
-      });
-    }.bind(this));
+
   },
   render: function() {
     return (

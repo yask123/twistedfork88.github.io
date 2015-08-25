@@ -53,7 +53,7 @@ var SnackBar = React.createClass({
             { this.props.message }
           </div>
           <div className='col-md-3 vcenter'>
-            <a href='#' onClick={ this.toggleShow }>DONE</a>
+            <a href='#' onClick={ this.toggleShow }>OKAY</a>
           </div>
         </div>
       </div>

@@ -99,3 +99,12 @@
   background-color: #2196FE;
   color: white;
 }
+
+.fabbutton.disabled {
+  outline: none;
+  box-shadow: none;
+  border: 0px;
+  background-color: #e1e1e1;
+  color: #b1b1b1;
+  cursor: auto;
+}

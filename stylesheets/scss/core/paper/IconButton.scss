@@ -93,5 +93,10 @@
 
 .iconbutton.transparent {
   background-color: transparent;
-  color: white;
+  color: #777777;
+
+  > .ink {
+    @extend .ink;
+    background: rgba(0, 0, 0, 0.4);
+  }
 }

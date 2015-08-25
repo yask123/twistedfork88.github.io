@@ -19,13 +19,6 @@ var TableControl = React.createClass({
     $(this._dom).find("tr").each(function(row) {
       $(row).addClass('show');
     });
-
-    $(document).on('themechange', function(evt) {
-      this.setState({
-        _className: evt.theme || ""
-      });
-    }.bind(this));
-
   },
   updatePaginateIndex: function(value) {
     this.setState({

@@ -17,15 +17,15 @@ var Chip = React.createClass({
   componentDidMount: function() {
     this._dom = getReactDOMNode(this);
 
-    /** remove active class if clicked anywhere else */
-    $(document).mouseup((evt) => {
-      if(!$(this._dom).is(evt.target) && !$(this._dom).has(evt.target).length) {
+    /** remove active class if clicked anywhere else
+    _jQ(document).mouseup((evt) => {
+      if(!_jQ(this._dom).is(evt.target) && !_jQ(this._dom).has(evt.target).length) {
         if(this.isMounted()) {
           this._dom.classList.remove('active');
         }
       }
     });
-
+    */
   },
   render: function() {
     return (

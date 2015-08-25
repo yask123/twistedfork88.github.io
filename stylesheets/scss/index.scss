@@ -1,25 +1,19 @@
 
+@import "./core/material-icons";
 @import './core/LeftNavigationBar';
-@import "./core/LogoutBox";
 @import "./core/paper/PaperInput";
 
-@import "./core/LoadIcon";
 @import "./core/Modal";
-@import "./core/View";
 @import "./core/paper/TableControl";
 @import "./mixin/vendor-prefix";
 @import "./mixin/box-shadow";
 @import "./core/paper/Snackbar";
 @import "./core/paper/PaperList";
 @import "./core/ProgressBar";
-@import "./core/ComboBox";
-@import "./core/AutoComplete";
-@import "./core/paper/IconDiv";
 @import "./core/paginate";
 @import "./core/paper/Picker";
 @import "./core/paper/IconMenu";
 @import "./core/paper/Slider";
-@import "./core/paper/Chip";
 @import "./core/paper/Checkbox";
 @import "./core/paper/Switch";
 @import "./core/paper/RadioElement";
@@ -35,7 +29,6 @@
 @import "./core/paper/labels";
 @import "./core/paper/Card";
 @import "./core/Wizard";
-@import "./core/404";
 
 @font-face {
   font-family: "Material Icons";
@@ -52,63 +45,16 @@
   src: url('../../fonts/Riona/Mika Melvas - RionaSans-Light.ttf');
 }
 
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
-
+/** basic styling */
 $font-stack: 'Riona';
 $primary-color: #666666;
 
 $link-normal-color: #444444;
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font: 100% $font-stack;
-  color: $primary-color;
-  background-color: #f5f6f6;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  //position: relative;
-}
-
 a {
   font-family: "Riona-Medium";
   text-transform: uppercase;
   text-decoration: none;
-}
-
-footer {
-  clear: left;
-  height: 96px;
-  background-color: #03a9f4;
-  position: relative;
-  width: 100%;
 }
 
 .avatar {
@@ -117,50 +63,6 @@ footer {
 
 .boldFont {
   font-family: 'Riona-Medium';
-}
-
-.DropDownMenu {
-  .ink {
-
-  }
-}
-
-#app {
-  border: 1px solid rgba(0,0,0,0.1);
-  margin: 2rem auto;
-  position: relative;
-  width: 80%;
-  max-width: 1500px;
-  padding: 1rem;
-  padding-top: 0;
-  background-color: #fafafa;
-  overflow-x: hidden;
-}
-
-.tooltip-inner {
-  white-space: nowrap;
-}
-
-.banner {
-  position: relative;
-  padding: 2rem;
-  color: black;
-  padding-bottom: 4rem;
-  //padding-top: 4rem;
-  background: white;
-  border-left: 5px solid #1E88E5;
-  @include generate-box-shadow(1);
-
-  > p{
-    font-size: 1.5rem;
-    line-height: 1.6rem;
-  }
-
-  .fabbutton {
-    position: absolute;
-    right: 30px;
-    bottom: -25px;
-  }
 }
 
 .filterinput {
@@ -175,10 +77,6 @@ footer {
   }
 }
 
-p {
-  font-size: 1.4rem;
-}
-
 /** tooltip adjustment */
 .tooltip-arrow {
   display: none;
@@ -188,25 +86,5 @@ p {
   border-radius: 2px;
   padding: 0.5rem;
   background-color: #343434;
-}
-
-/** Scrollbar styling :: ONLY FOR CHROME */
-::-webkit-scrollbar {
-  width: 1rem;
-}
-
-::-webkit-scrollbar-track {
-  width: 1rem;
-  background-color: rgba(0,0,0,0.04);
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 0;
-  background-color: rgba(0,0,0,0.6);
-}
-
-
-/** demo page CSS*/
-.eachComponent h3 {
-  font-family: 'Riona-Medium';
+  white-space: nowrap;
 }

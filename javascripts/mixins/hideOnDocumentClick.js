@@ -1,12 +1,8 @@
-'use strict';
 
 module.exports = {
-
-  //When the component mounts, listen to click events and
-  //Call the componentClickAway function.
-  _bindClickAway: function(ctx, elem, stateVar, value) {
-    $(document).bind('mouseup', (evt) => {
-      if(!$(elem).is(evt.target) && !$(elem).has(evt.target).length) {
+  hideOnDocumentClick: function(ctx, elem, stateVar, value) {
+    window.document.addEventListener('mouseup', (evt) => {
+      if((elem != evt.target) && !ctx.hasChild(elem, evt.target)) {
         if(ctx && ctx.isMounted()) {
           try {
             let _o = {};
@@ -19,5 +15,15 @@ module.exports = {
         }
       }
     });
+  },
+  hasChild: function(parent, child) {
+    let node = child.parentNode;
+    while (node) {
+      if (node == parent) {
+        return true
+      }
+      node = node.parentNode;
+    }
+    return false;
   }
 };
