@@ -1,5 +1,4 @@
 
-
 import React from 'react/addons';
 import { getReactDOMNode } from '../../utils/FKUtils';
 import { times } from 'underscore';
@@ -39,11 +38,12 @@ var Wizard = React.createClass({
     //align the navs
     this._dom = getReactDOMNode(this);
 
-    let _navs = $(this._dom).find('.wizardEachNav');
-    _navs.each((ind, item) => {
-      $(item).css('left', (ind*(100/(this.state.steps - 1)))+'%');
+    let _navs = Array.prototype.slice.call(this._dom.querySelectorAll('.wizardEachNav'));
+    _navs.forEach((item, ind) => {
+      item.style.left = (ind*(100/(this.state.steps - 1)))+'%';
+      item.style.marginLeft = '-20px';
     });
-    _navs.css('margin-left', '-20px');
+    //_navs.forEach(style.marginLeft = '-20px';
 
   },
   stepSelect: function(step) {

@@ -27,8 +27,6 @@ import AccordianElem from './components/core/AccordianElem';
 import SnackBar from './components/core/SnackBar';
 import Wizard from './components/core/Wizard';
 import Label from './components/core/Label';
-import MultipleComponent from './components/core/MultipleComponent';
-
 
 var WizardItem1 = React.createClass({
   getValue: function() {
@@ -161,7 +159,7 @@ var AppComponent = React.createClass({
     React.render(<SnackBar icon='check' message="I am a snackbar!" />, document.getElementById('snackbar'));
   },
   componentDidMount: function() {
-    $(window).scrollTop(0);
+    window.scrollTo(0, 0);
   },
   render: function() {
 
@@ -277,7 +275,7 @@ var AppComponent = React.createClass({
                 <PaperTextArea placeholder='description' /> <br/><br/>
                 <PaperTextArea
                   placeholder='description'
-                  charLimit={100}
+                  charLimit={500}
                   value='Designing and developing between platforms is a lot like traveling through different countries.' />
                 <br/><br/>
                 <PaperTextArea

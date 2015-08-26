@@ -1,17 +1,10 @@
 
 module.exports = {
-  hideOnDocumentClick: function(ctx, elem, stateVar, value) {
+  hideOnDocumentClick: function(ctx, elem, cb) {
     window.document.addEventListener('mouseup', (evt) => {
       if((elem != evt.target) && !ctx.hasChild(elem, evt.target)) {
-        if(ctx && ctx.isMounted()) {
-          try {
-            let _o = {};
-            _o[stateVar] = value;
-            ctx.setState(_o);
-          }
-          catch(e) {
-            console.error(e);
-          }
+        if(cb && typeof cb === 'function') {
+          cb();
         }
       }
     });

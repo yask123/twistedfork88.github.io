@@ -44,7 +44,7 @@ var FabButton = React.createClass({
             onClick={this.onClick}
             data-toggle="tooltip"
             data-placement={ this.props.placement }
-            title={ this.props.tooltip }
+            data-original-title={ this.props.tooltip }
             >
             { this.props.children }
           </div>

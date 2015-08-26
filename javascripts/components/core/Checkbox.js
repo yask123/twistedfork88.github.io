@@ -31,7 +31,13 @@ var Checkbox = React.createClass({
     });
 
     /** remove the checked class for ripple once animation ends */
-    $(this._ripple).on('animationend webkitAnimationEnd mozAnimationEnd', (evt) => {
+    this._ripple.addEventListener('animationend', (evt) => {
+      evt.target.classList.remove('checked');
+    });
+    this._ripple.addEventListener('webkitAnimationEnd', (evt) => {
+      evt.target.classList.remove('checked');
+    });
+    this._ripple.addEventListener('mozAnimationEnd', (evt) => {
       evt.target.classList.remove('checked');
     });
   },

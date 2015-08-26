@@ -47,7 +47,7 @@ var FileInput = React.createClass({
       if(_file) {
 
         //clear the file input value
-        $(this._fileInputDOM).val("");
+        this._fileInputDOM.value = "";
 
         //check for max length
         if(this.props.maxSize && !this.checkFileSize(files[0].size)) {
@@ -114,7 +114,7 @@ var FileInput = React.createClass({
       evt.preventDefault();
       evt.stopPropagation();
 
-      $(this._bgImg).removeClass('drag');
+      this._bgImg.classList.remove('drag');
 
       let files = evt.originalEvent.dataTransfer.files;
       if(files && files.length) {

@@ -9,6 +9,7 @@
 @import "./mixin/box-shadow";
 @import "./core/paper/Snackbar";
 @import "./core/paper/PaperList";
+@import "./core/paper/DropDownMenu";
 @import "./core/ProgressBar";
 @import "./core/paginate";
 @import "./core/paper/Picker";
@@ -29,6 +30,7 @@
 @import "./core/paper/labels";
 @import "./core/paper/Card";
 @import "./core/Wizard";
+@import "./core/paper/TouchRipple";
 
 @font-face {
   font-family: "Material Icons";

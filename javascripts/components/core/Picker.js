@@ -1,6 +1,7 @@
 
 
 import React from 'react';
+import _jQ from 'jquery';
 import PaperInput from './PaperInput';
 import PaperButton from './PaperButton';
 import IconButton from './IconButton';
@@ -46,8 +47,11 @@ var DatePicker = React.createClass({
     }
   },
   selectDate: function(date, evt) {
-    $('.monthdays > div').removeClass('active');
-    $(evt.target).addClass('active');
+    Array.prototype.slice.call(this._dom.querySelectorAll('.monthdays > div'))
+    .forEach((div) => {
+      div.classList.remove('active');
+    });
+    evt.target.classList.add('active');
 
     let _d = new Date(date+" "+DatePicker.months[this.state.month]+" "+this.state.year);
     this.setState({
@@ -103,13 +107,12 @@ var DatePicker = React.createClass({
     this.heightAdjustment();
   },
   heightAdjustment: function() {
-    let _height = $(this._dom).height();
-    $(this._dom).css({
-      'margin-top': -_height / 2
-    });
+    let _height = this._dom.offsetHeight;
+    this._dom.style.marginTop = -_height/2+'px';
 
-    let _dayWidth = $('.monthdays > div').width();
-    $('.weekdays > div, .monthdays > div').css('height', _dayWidth+'px');
+    let _dayWidth = this._dom.querySelector('.monthdays > div').offsetWidth;
+
+    _jQ(this._dom).find('.weekdays > div, .monthdays > div').css('height', _dayWidth+'px');
   },
   getValue: function() {
 

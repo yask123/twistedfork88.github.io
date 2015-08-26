@@ -23,21 +23,22 @@ var PaperInput = React.createClass({
   },
   componentDidMount: function() {
     this._dom = getReactDOMNode(this);
+    this._input = this._dom.querySelector('input');
     this.value = this.props.value || "";
 
     //remove pattern attribute if not present
     if(!this.props.pattern) {
-      $(this._dom).find('input').removeAttr('pattern');
+      this._input.removeAttribute('pattern');
     }
 
     if(this.state.value) {
-      $(this._dom).find('input').trigger('focus');
+      this._input.focus();
     }
 
-    $(this._dom).find('input').trigger('blur');
+    this._input.blur();
 
     if(this.props.disabled) {
-      $(this._dom).find('input').attr('disabled', 'true');
+      this._input.setAttribute('disabled', 'true');
     }
 
   },
@@ -46,20 +47,21 @@ var PaperInput = React.createClass({
       value: value
     });
     if(value) {
-      $(this._dom).find('input').trigger('focus');
+      this._input.focus();
     }
   },
   focus: function(evt) {
 
     if(!this.state.disabled || (this.state.disabled && this.state.value)) {
-      $(evt.target).parent()
-        .find('.fakePlaceholder')
-        .addClass('fakeAnimate');
+      evt.target.parentNode
+        .querySelector('.fakePlaceholder')
+        .classList.add('fakeAnimate');
     }
 
     if(!this.state.disabled) {
-      $(evt.target).parent()
-        .find('.belowborder').addClass('belowborderanimate');
+      evt.target.parentNode
+        .querySelector('.belowborder')
+        .classList.add('belowborderanimate');
 
       if(this.props.onFocus && typeof this.props.onFocus === "function") {
         this.props.onFocus.call(null, this.getValue());
@@ -68,16 +70,29 @@ var PaperInput = React.createClass({
   },
   blur: function(evt) {
 
-    $(evt.target).parent().find('.belowborder').removeClass('belowborderanimate');
+    evt.target
+      .parentNode
+      .querySelector('.belowborder')
+      .classList.remove('belowborderanimate');
+
     if(!this.state.value) {
-      $(evt.target).parent().find('.fakePlaceholder').removeClass('fakeAnimate');
+      evt.target
+        .parentNode
+        .querySelector('.fakePlaceholder')
+        .classList.remove('fakeAnimate');
 
       if(this.props.required) {
-        $(evt.target).parent().find('.belowborder').addClass('invalid');
+        evt.target
+          .parentNode
+          .querySelector('.belowborder')
+          .classList.add('invalid');
       }
     }
     else {
-      $(evt.target).parent().find('.belowborder').removeClass('invalid');
+      evt.target
+        .parentNode
+        .querySelector('.belowborder')
+        .classList.remove('invalid');
     }
     if(!this.state.disabled) {
       if(this.props.onBlur && typeof this.props.onBlur === "function") {

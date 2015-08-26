@@ -1,6 +1,7 @@
 
 
 import React from 'react';
+import _jQ from 'jquery';
 import Draggable from 'react-draggable';
 
 var Slider = React.createClass({
@@ -42,7 +43,7 @@ var Slider = React.createClass({
   },
   drag: function(evt, ui) {
 
-    this._trackLength = $(this._track).width();
+    this._trackLength = this._track.offsetWidth;
     let _lastPosition = evt.pageX - this._trackOffset.left;
 
     if(_lastPosition < 0) {
@@ -76,10 +77,10 @@ var Slider = React.createClass({
     this._trackfill = this._track.querySelector('.trackfill');
     this._thumb = this._dom.querySelector('.thumb');
 
-    this._trackLength = $(this._track).width();
-    this._trackOffset = $(this._track).offset();
+    this._trackLength = this._track.offsetWidth;
+    this._trackOffset = _jQ(this._track).offset();
 
-    $('.thumb.react-draggable-dragging').bind('mousedown', (e) => {
+    _jQ('.thumb.react-draggable-dragging').bind('mousedown', (e) => {
       this.mouseDown(e);
     });
     this.setValue(this.props.value);

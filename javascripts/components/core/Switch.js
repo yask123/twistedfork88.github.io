@@ -1,11 +1,15 @@
 
 import React from 'react';
+import touchRippleMixin from '../../mixins/TouchRipple';
+import { getReactDOMNode } from '../../utils/FKUtils';
+
 
 var Switch = React.createClass({
   propTypes: {
     checked: React.PropTypes.bool,
     onValueChange: React.PropTypes.func
   },
+  mixins: [ touchRippleMixin ],
   getInitialState: function() {
     return {
       checked: this.props.checked || false
@@ -34,6 +38,12 @@ var Switch = React.createClass({
     this.setState({
       checked: value
     });
+  },
+  componentDidMount: function() {
+    this._dom = getReactDOMNode(this);
+    this._ball = this._dom.querySelector('.ball');
+
+    this._attachRipple(this._ball);
   },
   render: function() {
     let _class = (this.state.checked) ? " checked": "";

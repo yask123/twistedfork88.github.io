@@ -3,6 +3,8 @@ import _ from 'underscore';
 import React from 'react';
 import { generateRandomString, getReactDOMNode } from '../../utils/FKUtils';
 import RippleMixin from '../../mixins/RippleMixin';
+import hideOnDocumentClickMixin from '../../mixins/hideOnDocumentClick';
+import keyboardNavigationMixin from '../../mixins/keyboardNavigationMixin';
 
 var DropDownMenu = React.createClass({
   propTypes: {
@@ -10,7 +12,7 @@ var DropDownMenu = React.createClass({
     items: React.PropTypes.array,
     selectHandler: React.PropTypes.func
   },
-  mixins: [ RippleMixin ],
+  mixins: [ RippleMixin, hideOnDocumentClickMixin, keyboardNavigationMixin ],
   getInitialState: function() {
     return {
       disabled: this.props.disabled || false,
@@ -26,6 +28,14 @@ var DropDownMenu = React.createClass({
     }
     this.setState({
       optionsShown: !this.state.optionsShown
+    }, () => {
+      if(this.state.optionsShown) {
+        //bind keyboard navigation
+        this._bindKeyboardNav(this, this._dom.querySelector('ul'), this.optionSelected);
+      }
+      else {
+        this._unbindKeyboardNav(this);
+      }
     });
   },
   optionSelected: function(evt) {
@@ -55,17 +65,19 @@ var DropDownMenu = React.createClass({
 
     this._dom = getReactDOMNode(this);
 
-    $(document).mouseup(function(evt) {
-      if(!$(this._dom).is(evt.target) && !$(this._dom).has(evt.target).length) {
-        if(this.isMounted()) {
-          this.setState({
-            optionsShown:false,
-            liHover: false
-          });
-        }
+    this.hideOnDocumentClick(this, this._down, () => {
+      if(this.isMounted()) {
+        this._unbindKeyboardNav(this);
+        this.setState({
+          optionsShown:false,
+          liHover: false
+        });
       }
-    }.bind(this));
+    });
 
+  },
+  componentWillUnmount: function() {
+    this._unbindKeyboardNav(this);
   },
   render: function() {
 
@@ -118,7 +130,7 @@ var DropDownMenu = React.createClass({
       if(this.state.liHover === index) {
         _bgColor = '#f1f1f1';
       }
-      _style = _.extend({ backgroundColor: _bgColor }, inlineStyles.listItem);
+      _style = _.extend({}, inlineStyles.listItem);
       return <li
               className='boldFont'
               data-index={index}
@@ -130,7 +142,7 @@ var DropDownMenu = React.createClass({
     });
 
     return (
-      <div className='DropDownMenu' style={ inlineStyles.dropdownmenu } >
+      <div className='DropDownMenu' style={ inlineStyles.dropdownmenu } tabIndex='0'>
         <div style={ inlineStyles.input } onClick={this.toggleOptions}>
           <p>{ this.state.value }</p>
           <i className="material-icons" style={ inlineStyles.matIcon }>arrow_drop_down</i>

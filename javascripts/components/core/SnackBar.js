@@ -1,6 +1,7 @@
 
 
 import React from 'react';
+import _jQ from 'jquery';
 
 var SnackBar = React.createClass({
   propTypes: {
@@ -35,7 +36,7 @@ var SnackBar = React.createClass({
   toggleShow: function(evt) {
     evt.preventDefault();
 
-    $(this._dom).fadeOut((dom) => {
+    _jQ(this._dom).fadeOut((dom) => {
       if(this.isMounted()) {
         React.unmountComponentAtNode(dom.parentNode);
       }

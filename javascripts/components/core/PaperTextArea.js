@@ -29,34 +29,39 @@ var PaperTextArea = React.createClass({
   },
   componentDidMount: function() {
     this._dom = Utils.getReactDOMNode(this);
+    this._txtArea = this._dom.querySelector('textarea');
     this.value = this.props.value || "";
 
     if(this.state.value) {
-      $(this._dom).find('textarea').trigger('focus');
-      this.processKeyUp($(this._dom).find('textarea').get(0));
+      this._txtArea.focus();
+      this.processKeyUp(this._txtArea);
     }
 
     if(this.props.charLimit) {
       this._charcounter = Utils.getReactDOMNodeForRef(this.refs['charcounter']);
     }
 
+    this._txtArea.blur();
+
     if(this.props.disabled) {
-      $(this._dom).find('textarea').attr('disabled', 'true');
+      this._txtArea.setAttribute('disabled', 'true');
     }
 
   },
   focus: function(evt) {
 
     if(!this.state.disabled || (this.state.disabled && this.state.value)) {
-      $(evt.target)
-      .parent()
-      .find('.fakePlaceholder')
-      .addClass('fakeAnimate');
+      evt.target
+        .parentNode
+        .querySelector('.fakePlaceholder')
+        .classList.add('fakeAnimate');
     }
 
     if(!this.state.disabled) {
-      $(evt.target).parent()
-        .find('.belowborder').addClass('belowborderanimate');
+      evt.target
+        .parentNode
+        .querySelector('.belowborder')
+        .classList.add('belowborderanimate');
 
       if(this.props.onFocus && typeof this.props.onFocus === "function") {
         this.props.onFocus.call(null, this.getValue());
@@ -64,10 +69,16 @@ var PaperTextArea = React.createClass({
     }
   },
   blur: function(evt) {
-    $(evt.target).parent()
-      .find('.belowborder').removeClass('belowborderanimate');
+    evt.target
+      .parentNode
+      .querySelector('.belowborder')
+      .classList.remove('belowborderanimate');
+
     if(!this.state.value) {
-      $(evt.target).parent().find('.fakePlaceholder').removeClass('fakeAnimate');
+      evt.target
+        .parentNode
+        .querySelector('.fakePlaceholder')
+        .classList.remove('fakeAnimate');
     }
     if(!this.state.disabled) {
       if(this.props.onBlur && typeof this.props.onBlur === "function") {
@@ -79,9 +90,8 @@ var PaperTextArea = React.createClass({
     this.processKeyUp(evt.target);
   },
   processKeyUp: function(target) {
-    $(target)
-      .css('height','auto')
-		  .height(target.scrollHeight);
+    target.style.height = 'auto';
+    target.style.height = target.scrollHeight+20+'px';
   },
   handleChange: function(evt) {
     if(this.state.disabled) {

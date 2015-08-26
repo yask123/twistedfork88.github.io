@@ -1,5 +1,6 @@
 
 import React from 'react';
+import _jQ from 'jquery';
 
 var Timeline = React.createClass({
   propTypes: {
@@ -8,18 +9,18 @@ var Timeline = React.createClass({
   componentDidMount: function() {
     this._dom = React.findDOMNode(this);
     this._timelineBar = this._dom.querySelector('.timelinebar');
-    let _items = $(this._dom).find('.timelineitem');
+    let _items = _jQ(this._dom).find('.timelineitem');
 
     _items.each((idx, item) => {
-      let _offset = $(item).position(), _ht = $(item).height();
+      let _offset = _jQ(item).position(), _ht = _jQ(item).height();
 
       if(idx === 0) {
-        $(this._timelineBar).find('span:first-child').css({
+        _jQ(this._timelineBar).find('span:first-child').css({
           height: _ht/2+'px'
         });
       }
       else if(idx === _items.length - 1) {
-        $(this._timelineBar).find('span:last-child').css({
+        _jQ(this._timelineBar).find('span:last-child').css({
           height: _ht/2+'px'
         });
       }

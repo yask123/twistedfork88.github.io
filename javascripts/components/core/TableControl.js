@@ -16,9 +16,7 @@ var TableControl = React.createClass({
   },
   componentDidMount: function() {
     this._dom = React.findDOMNode(this);
-    $(this._dom).find("tr").each(function(row) {
-      $(row).addClass('show');
-    });
+    
   },
   updatePaginateIndex: function(value) {
     this.setState({

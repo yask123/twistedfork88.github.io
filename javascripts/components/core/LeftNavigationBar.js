@@ -1,5 +1,6 @@
 
 import React from 'react';
+import _jQ from 'jquery';
 import IconButton from './IconButton';
 import { generateRandomString } from '../../utils/FKUtils';
 
@@ -12,13 +13,13 @@ var LeftNavBar = React.createClass({
   },
   componentDidMount: function() {
     this._dom = React.findDOMNode(this);
-    this._allHeadings = $(this._dom).find('.leftnavbar nav dt');
+    this._allHeadings = _jQ(this._dom).find('.leftnavbar nav dt');
 
     this.showLinks();
 
     //adjust the max-height of the contents of the navbar
-    $(this._dom).find('nav').css({
-      'max-height': ($(this._dom).find('.leftnavbar').height() - 250),
+    _jQ(this._dom).find('nav').css({
+      'max-height': (_jQ(this._dom).find('.leftnavbar').height() - 250),
       'overflow-y': 'auto'
     });
 
@@ -51,35 +52,35 @@ var LeftNavBar = React.createClass({
   },
   showLinks: function() {
     // collapse all links
-    this._allLinkCollections = $(this._dom).find('.leftnavbar nav div');
-    $(this._allLinkCollections).slideUp();
+    this._allLinkCollections = _jQ(this._dom).find('.leftnavbar nav div');
+    _jQ(this._allLinkCollections).slideUp();
   },
   getDomNode: function(elem) {
     return React.findDOMNode(elem);
   },
   resetAllHeadings: function() {
-    $(this._allHeadings).data('status', 'collapsed');
+    _jQ(this._allHeadings).data('status', 'collapsed');
 
     //hide all the sub-items list div
-    $(this._allLinkCollections).hide();
+    _jQ(this._allLinkCollections).hide();
 
     //remove active class from all DIVs
-    $(this._allHeadings).removeClass('active');
+    _jQ(this._allHeadings).removeClass('active');
   },
   toggleItems: function(evt) {
     var _domElem = evt.target;
     //this.resetAllHeadings();
 
     if(
-      $(_domElem).data('status') === "collapsed" ||
-      typeof $(_domElem).data('status') === "undefined"
+      _jQ(_domElem).data('status') === "collapsed" ||
+      typeof _jQ(_domElem).data('status') === "undefined"
     ) {
-      $(_domElem).addClass('active').data('status', "expanded");
-      $(_domElem).next().slideDown();
+      _jQ(_domElem).addClass('active').data('status', "expanded");
+      _jQ(_domElem).next().slideDown();
     }
     else {
-      $(_domElem).removeClass('active').data('status', "collapsed");
-      $(_domElem).next().slideUp();
+      _jQ(_domElem).removeClass('active').data('status', "collapsed");
+      _jQ(_domElem).next().slideUp();
     }
 
   },

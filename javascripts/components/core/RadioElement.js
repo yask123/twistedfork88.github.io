@@ -1,5 +1,7 @@
 
 import React from 'react';
+import touchRippleMixin from '../../mixins/TouchRipple';
+import { getReactDOMNode } from '../../utils/FKUtils';
 
 var RadioElement = React.createClass({
   propTypes: {
@@ -7,6 +9,7 @@ var RadioElement = React.createClass({
     disabled: React.PropTypes.bool,
     onItemSelect: React.PropTypes.func
   },
+  mixins: [ touchRippleMixin ],
   getInitialState: function() {
     return {
       isDisabled: this.props.disabled || false,
@@ -47,6 +50,15 @@ var RadioElement = React.createClass({
       return item.selected === true;
     });
     return _t[0] || null;
+  },
+  componentDidMount: function() {
+    this._dom = getReactDOMNode(this);
+    this._radios = Array.prototype.slice.call(this._dom.querySelectorAll('.radioelementitem'));
+
+    this._radios.forEach((radio) => {
+      this._attachRipple(radio.querySelector('.circle'));
+    });
+
   },
   render: function() {
     let _items = this.state.items.map((item, index) => {

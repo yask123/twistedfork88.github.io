@@ -30,16 +30,15 @@ var Card = React.createClass({
 
     this._dom = React.findDOMNode(this);
     if(this.props.type === 'rich-media') {
-      let _richMedia = $(this._dom).find('.card-rich-media-bg'),
-          _w = _richMedia.width(),
+      let _richMedia = (this._dom).querySelector('.card-rich-media-bg'),
+          _w = _richMedia.offsetWidth,
           _h = (9/16)*_w;
 
       _richMedia
-        .height(_h)
-        .css({
-          'background-position':'center',
-          'background-repeat':'no-repeat'
-        });
+        .style.height = _h+'px';
+      _richMedia.style.backgroundPosition = 'center';
+      _richMedia.style.backgroundRepeat = 'no-repeat';
+
     }
 
   },

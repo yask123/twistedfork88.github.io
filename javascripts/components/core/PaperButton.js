@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import $ from 'jquery';
+import RippleMixin from '../../mixins/RippleMixin';
 import { generateRandomString } from '../../utils/FKUtils';
 
 var PaperButton = React.createClass({
@@ -9,46 +9,12 @@ var PaperButton = React.createClass({
     disabled: React.PropTypes.bool,
     clickHandler: React.PropTypes.func
   },
+  mixins:[RippleMixin],
   getInitialState: function() {
     return {
       disabled: this.props.disabled || false,
       _className: "paperbutton " + (this.props.type || "")
     }
-  },
-  createRipple: function(evt) {
-    var posX = $(evt.currentTarget).offset().left;
-		var posY = $(evt.currentTarget).offset().top;
-
-		var parHeight = $(evt.currentTarget).height()/2;
-		var parWidth = $(evt.currentTarget).width()/2;
-		var d = Math.max(parHeight, parWidth);
-
-		if($(evt.currentTarget).find('.ink').length){
-		  $(evt.currentTarget).find('.ink').remove();
-		}
-
-		var ink = document.createElement('div');
-     	$(ink).attr('class', 'ink');
-		$(evt.currentTarget).append($(ink));
-
-		var inkElem =$(evt.currentTarget).find('.ink')[0];
-		$(inkElem).removeClass('animate');
-
-		$(inkElem)
-		  .css({
-		    'top': (evt.pageY - posY - d/2)+'px',
-		    'left': (evt.pageX - posX - d/2)+'px',
-		    'width': d,
-		    'height': d
-		});
-
-    /** remove the ink element after animation ends. */
-		$(inkElem)
-      .on('animationend webkitAnimationEnd mozAnimationEnd', function(evt){
-        $(evt.target).remove();
-      })
-      .addClass('animate');
-
   },
   onClick: function(evt) {
 
@@ -57,7 +23,7 @@ var PaperButton = React.createClass({
     }
 
     //do the ink stuff
-    this.createRipple(evt);
+    this.createRipple(evt, evt.currentTarget);
 
     if(this.props.clickHandler) {
       setTimeout(function() {

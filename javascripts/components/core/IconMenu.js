@@ -2,6 +2,7 @@
 import React from 'react';
 import IconButton from './IconButton';
 import hideOnDocumentClickMixin from '../../mixins/hideOnDocumentClick';
+import keyboardNavigationMixin from '../../mixins/keyboardNavigationMixin';
 import RippleMixin from '../../mixins/RippleMixin';
 
 var IconMenu = React.createClass({
@@ -16,7 +17,7 @@ var IconMenu = React.createClass({
       }
     }*/
   },
-  mixins:[ hideOnDocumentClickMixin, RippleMixin ],
+  mixins:[ hideOnDocumentClickMixin, RippleMixin, keyboardNavigationMixin ],
   getDefaultProps: function() {
     return {
       openDirection: "top-left"
@@ -30,6 +31,16 @@ var IconMenu = React.createClass({
   toggleMenu: function() {
     this.setState({
       menuShown: !this.state.menuShown
+    }, () => {
+
+      if(this.state.menuShown) {
+        //bind keyboard navigation
+        this._bindKeyboardNav(this, this._menu, this.itemSelected);
+      }
+      else {
+        this._unbindKeyboardNav(this);
+      }
+
     });
   },
   itemSelected: function(evt) {
@@ -53,12 +64,19 @@ var IconMenu = React.createClass({
     this._btn = React.findDOMNode(this.refs.btn);
     this._menu = this._dom.querySelector('ul');
 
-    this.hideOnDocumentClick(this, this._menu, 'menuShown', false);
+    this.hideOnDocumentClick(this, this._menu, () => {
+      if(this.isMounted()) {
+        this._unbindKeyboardNav(this);
+        this.setState({
+          menuShown:false
+        });
+      }
+    });
 
     let _width, _height, _btnSize, _offset = {};
-    _width = $(this._menu).width();
-    _height = $(this._menu).height();
-    _btnSize = $(this._btn).width();
+    _width = this._menu.offsetWidth;
+    _height = this._menu.offsetHeight;
+    _btnSize = this._btn.offsetWidth;
 
     switch(this.props.openDirection) {
       case "top-left":
@@ -90,7 +108,8 @@ var IconMenu = React.createClass({
         break;
     }
 
-    $(this._menu).css(_offset);
+    this._menu.style.left = _offset.left+'px';
+    this._menu.style.top = _offset.top+'px';
 
   },
   render: function() {
@@ -121,7 +140,7 @@ var IconMenu = React.createClass({
     });
 
     return (
-      <div className='iconmenu'>
+      <div className='iconmenu' tabIndex='0'>
         <IconButton clickHandler={ this.toggleMenu } ref='btn'>
           <i className='material-icons'>{ this.props.menuBtn || 'more_vert' }</i>
         </IconButton>
